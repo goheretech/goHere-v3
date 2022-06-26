@@ -10,9 +10,10 @@
 // import { Vector2, Vector3 } from 'three';
 
 // import './style.css'
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.141.0/build/three.min.js'
-// import { OrbitControls } from 'OrbitControls'
-import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/js/loaders/OBJLoader.min.js'
+// import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.141.0/build/three.min.js'
+// import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/js/loaders/OBJLoader.min.js'
+import * as THREE from 'https://unpkg.com/three@0.119.1/build/three.module.js';
+import { OBJLoader } from 'https://unpkg.com/three@0.119.1/examples/js/loaders/OBJLoader.min.js';
 import { EXRLoader } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/EXRLoader.min.js';
 import { EffectComposer } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/RenderPass.js';
