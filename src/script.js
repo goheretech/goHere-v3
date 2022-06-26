@@ -12,12 +12,12 @@
 // import './style.css'
 import * as THREE from 'three'
 // import { OrbitControls } from 'OrbitControls'
-import { OBJLoader } from 'OBJLoader'
-import { EXRLoader } from 'EXRLoader';
-import { EffectComposer } from 'EffectComposer';
-import { RenderPass } from 'RenderPass';
-import { UnrealBloomPass } from 'UnrealBloomPass';
-import dat from 'dat.gui'
+import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.122.0/examples/js/loaders/OBJLoader.min.js'
+import { EXRLoader } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/EXRLoader.min.js';
+import { EffectComposer } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/UnrealBloomPass.js';
+import dat from 'https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.js'
 // import { Vector2, Vector3 } from 'three';
 
 
