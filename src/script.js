@@ -9,6 +9,17 @@
 // import * as dat from 'dat.gui'
 // import { Vector2, Vector3 } from 'three';
 
+import './style.css'
+import * as THREE from 'three'
+import { OrbitControls } from 'OrbitControls'
+// import { OBJLoader } from 'OBJLoader'
+import { EXRLoader } from 'EXRLoader';
+import { EffectComposer } from 'EffectComposer';
+import { RenderPass } from 'RenderPass';
+import { UnrealBloomPass } from 'UnrealBloomPass';
+import dat from 'dat'
+import { Vector2, Vector3 } from 'three';
+
 
 
 
