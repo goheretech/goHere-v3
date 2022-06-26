@@ -10,7 +10,7 @@
 // import { Vector2, Vector3 } from 'three';
 
 // import './style.css'
-import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js'
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.141.0/build/three.min.js'
 // import { OrbitControls } from 'OrbitControls'
 import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/js/loaders/OBJLoader.min.js'
 import { EXRLoader } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/EXRLoader.min.js';
