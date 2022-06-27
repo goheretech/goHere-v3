@@ -1,27 +1,13 @@
-// import './style.css'
-// import * as THREE from 'three'
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
-// import { EXRLoader } from 'three/examples/jsm/loaders/EXRLoader.js';
-// import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-// import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-// import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-// import * as dat from 'dat.gui'
-// import { Vector2, Vector3 } from 'three';
-
-// import './style.css'
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.141.0/build/three.module.js'
-// // import * as THREE from 'https://unpkg.com/three@0.119.1/build/three.module.js';
-import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/OBJLoader.min.js'
-// // import { OBJLoader } from 'https://unpkg.com/three@0.119.1/examples/js/loaders/OBJLoader.min.js';
-// import { EXRLoader } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/EXRLoader.min.js';
-// import { EffectComposer } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/EffectComposer.js';
-// import { RenderPass } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/RenderPass.js';
-// import { UnrealBloomPass } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/UnrealBloomPass.js';
-// import dat from 'https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.js'
-// import { Vector2, Vector3 } from 'three';
-
-
+import './style.css'
+import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
+import { EXRLoader } from 'three/examples/jsm/loaders/EXRLoader.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import * as dat from 'dat.gui'
+import { Vector2, Vector3 } from 'three';
 
 
 let object, exrCubeRenderTarget, exrBackground, logo, composer, floorMaterial, logoMaterial, scrollPosition = 0, cameraMouseX, cameraMouseY, logoObj, realScrollPosition= 0, transitionSpeed= 0.05;
