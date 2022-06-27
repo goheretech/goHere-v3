@@ -346,11 +346,11 @@ button.addEventListener("click", exportInfo);
 // texture
 
 const textureLoader = new THREE.TextureLoader(manager);
-const texture = textureLoader.load('./textures/metal' + logoParams.textureNumber + '/A23DTEX_Albedo.jpg');
-const roughness = textureLoader.load('./textures/metal' + logoParams.textureNumber + '/A23DTEX_Roughness.jpg');
-const specular = textureLoader.load('./textures/metal' + logoParams.textureNumber + '/A23DTEX_Specular.jpg');
-const normal = textureLoader.load('./textures/metal' + logoParams.textureNumber + '/A23DTEX_Normal.jpg');
-const aoMap = textureLoader.load('./textures/metal' + logoParams.textureNumber + '/A23DTEX_AO.jpg');
+const texture = textureLoader.load('https://cdn.jsdelivr.net/gh/goheretech/goHere-v3/static/textures/metal' + logoParams.textureNumber + '/A23DTEX_Albedo.jpg');
+const roughness = textureLoader.load('https://cdn.jsdelivr.net/gh/goheretech/goHere-v3/static/textures/metal' + logoParams.textureNumber + '/A23DTEX_Roughness.jpg');
+const specular = textureLoader.load('https://cdn.jsdelivr.net/gh/goheretech/goHere-v3/static/textures/metal' + logoParams.textureNumber + '/A23DTEX_Specular.jpg');
+const normal = textureLoader.load('https://cdn.jsdelivr.net/gh/goheretech/goHere-v3/static/textures/metal' + logoParams.textureNumber + '/A23DTEX_Normal.jpg');
+const aoMap = textureLoader.load('https://cdn.jsdelivr.net/gh/goheretech/goHere-v3/static/textures/metal' + logoParams.textureNumber + '/A23DTEX_AO.jpg');
 
 function generateTextures(model) {
     texture.wrapS = THREE.RepeatWrapping;
