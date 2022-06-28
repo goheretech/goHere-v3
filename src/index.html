@@ -15,6 +15,38 @@
             color:white;
             cursor:pointer;
         }
+
+        .loadScreen
+        {
+            background:black;
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index:99;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .loadBar
+        {
+            border:1px solid white;
+            width:600px;
+            height:20px;
+            position: relative;
+        }  
+        #loadBar_internal{
+            position:absolute;
+            left:0;
+            top:0;
+            bottom:0;
+            width:0%;
+            background:white;
+        }
+
+
     </style>
     <link rel="stylesheet" href="style.css"></link>
     <script type="importmap">
@@ -37,6 +69,11 @@
 <body>
     <canvas class="webgl"></canvas>
     <div id="button" >Export Changes</div>
+    <div class="loadScreen">
+        <div class="loadBar">
+            <div id="loadBar_internal"></div>
+        </div>
+    </div>
 </body>
 <script type="module" src="script.js"></script>
 </html>

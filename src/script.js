@@ -19,7 +19,7 @@ import { Vector2, Vector3 } from 'three';
 
 
 let object, exrCubeRenderTarget, exrBackground, logo, composer, floorMaterial, logoMaterial, scrollPosition = 0, cameraMouseX, cameraMouseY, logoObj, realScrollPosition= 0, transitionSpeed= 0.05;
-
+let progressModel = 0,progressBG = 0, progress;
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
@@ -367,13 +367,36 @@ function generateTextures(model) {
 
 // model
 
-function onProgress(xhr) {
+function onProgressModel(xhr) {
 
     if (xhr.lengthComputable) {
+        var loader = document.getElementById("loadBar_internal");
+        const percentComplete = xhr.loaded / xhr.total * 50;
+        progressModel = percentComplete;
+        progress = progressModel + progressBG;
+        loader.style.width = progress+"%";
+        console.log('model ' + Math.round(percentComplete*2, 2) + '% downloaded');
+        if(progress == 100)
+        {
+            loader.parentElement.parentElement.style.display = "none";
+        }
+    }
 
-        const percentComplete = xhr.loaded / xhr.total * 100;
-        console.log('model ' + Math.round(percentComplete, 2) + '% downloaded');
+}
 
+function onProgressBG(xhr) {
+
+    if (xhr.lengthComputable) {
+        var loader = document.getElementById("loadBar_internal");
+        const percentComplete = xhr.loaded / xhr.total * 50;
+        progressBG = percentComplete;
+        progress = progressModel + progressBG;
+        loader.style.width = progress+"%";
+        console.log('bg ' + Math.round(percentComplete*2, 2) + '% downloaded');
+        if(progress == 100)
+        {
+            loader.parentElement.parentElement.style.display = "none";
+        }
     }
 
 }
@@ -385,7 +408,7 @@ loader.load('https://cdn.jsdelivr.net/gh/goheretech/goHere-v3/static/models/icon
 
     object = obj;
 
-}, onProgress, onError);
+}, onProgressModel, onError);
 
 //
 
@@ -424,7 +447,7 @@ new EXRLoader()
 
         texture.dispose();
 
-    });
+    },onProgressBG,onError);
 
 
 const pmremGenerator = new THREE.PMREMGenerator(renderer);
