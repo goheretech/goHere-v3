@@ -17,11 +17,26 @@
         }
     </style>
     <link rel="stylesheet" href="style.css"></link>
-    <script src="script.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.141.0/build/three.min.js",
+                "OBJLoader": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/OBJLoader.js",
+                "GLTFLoader": "https://unpkg.com/three@0.125.2/examples/js/loaders/GLTFLoader.js",
+                "EXRLoader": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/EXRLoader.js",
+                "RenderPass": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/RenderPass.js",
+                "UnrealBloomPass": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+                "EffectComposer": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/EffectComposer.js",
+                "dat": "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.js"
+            }
+        }
+    </script>
+    
     
 </head>
 <body>
     <canvas class="webgl"></canvas>
     <div id="button" >Export Changes</div>
 </body>
+<script type="module" src="script.js"></script>
 </html>
