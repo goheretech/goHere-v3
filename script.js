@@ -417,7 +417,7 @@ composer.addPass(bloomPass);
 
 //EXR Maps
 new EXRLoader()
-    .load('textures/equirect.exr', function (texture) {
+    .load('https://cdn.jsdelivr.net/gh/goheretech/goHere-v3/static/textures/equirect.exr', function (texture) {
 
         exrCubeRenderTarget = pmremGenerator.fromEquirectangular(texture);
         exrBackground = exrCubeRenderTarget.texture;
