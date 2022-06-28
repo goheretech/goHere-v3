@@ -1,11 +1,19 @@
 import './style.css'
 import * as THREE from 'three'
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
-import { EXRLoader } from 'three/examples/jsm/loaders/EXRLoader.js';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
+// import { EXRLoader } from 'three/examples/jsm/loaders/EXRLoader.js';
+// import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+// import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+// import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+// import * as dat from 'dat.gui'
+// import { Vector2, Vector3 } from 'three';
+
+import { OBJLoader } from 'OBJLoader'
+import { EXRLoader } from 'EXRLoader';
+import { EffectComposer } from 'EffectComposer';
+import { RenderPass } from 'RenderPass';
+import { UnrealBloomPass } from 'UnrealBloomPass';
 import * as dat from 'dat.gui'
 import { Vector2, Vector3 } from 'three';
 
