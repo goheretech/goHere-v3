@@ -9,12 +9,12 @@ import * as THREE from 'three'
 // import * as dat from 'dat.gui'
 // import { Vector2, Vector3 } from 'three';
 
-import { OBJLoader } from 'OBJLoader'
+import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/OBJLoader.js'
 import { EXRLoader } from 'EXRLoader';
 import { EffectComposer } from 'EffectComposer';
 import { RenderPass } from 'RenderPass';
 import { UnrealBloomPass } from 'UnrealBloomPass';
-import * as dat from 'dat.gui'
+// import * as dat from 'https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.js'
 import { Vector2, Vector3 } from 'three';
 
 
@@ -198,42 +198,42 @@ function init() {
 
 // Debug
 
-function setupGUI() {
+// function setupGUI() {
 
-    // console.log(camera);
+//     // console.log(camera);
 
-    const gui = new dat.GUI()
-    let guiCamera = gui.addFolder('Camera');
-    let guiCameraRot = guiCamera.addFolder('Camera Rotation');
-    guiCameraRot.add(camera.rotation, 'x', -Math.PI, Math.PI, .01).name("X").onChange((value) => { camera.rotation.x = value })
-    guiCameraRot.add(camera.rotation, 'y', -Math.PI, Math.PI, .01).name("y").onChange((value) => { camera.rotation.y = value })
-    guiCameraRot.add(camera.rotation, 'z', -Math.PI, Math.PI, .01).name("z").onChange((value) => { camera.rotation.z = value })
-    let guiCameraPos = guiCamera.addFolder('Camera Position');
-    guiCameraPos.add(camera.position, 'x', -25, 25, .01).name("X").onChange((value) => { camera.position.x = value })
-    guiCameraPos.add(camera.position, 'y', -25, 25, .01).name("y").onChange((value) => { camera.position.y = value })
-    guiCameraPos.add(camera.position, 'z', -25, 25, .01).name("z").onChange((value) => { camera.position.z = value })
+//     const gui = new dat.GUI()
+//     let guiCamera = gui.addFolder('Camera');
+//     let guiCameraRot = guiCamera.addFolder('Camera Rotation');
+//     guiCameraRot.add(camera.rotation, 'x', -Math.PI, Math.PI, .01).name("X").onChange((value) => { camera.rotation.x = value })
+//     guiCameraRot.add(camera.rotation, 'y', -Math.PI, Math.PI, .01).name("y").onChange((value) => { camera.rotation.y = value })
+//     guiCameraRot.add(camera.rotation, 'z', -Math.PI, Math.PI, .01).name("z").onChange((value) => { camera.rotation.z = value })
+//     let guiCameraPos = guiCamera.addFolder('Camera Position');
+//     guiCameraPos.add(camera.position, 'x', -25, 25, .01).name("X").onChange((value) => { camera.position.x = value })
+//     guiCameraPos.add(camera.position, 'y', -25, 25, .01).name("y").onChange((value) => { camera.position.y = value })
+//     guiCameraPos.add(camera.position, 'z', -25, 25, .01).name("z").onChange((value) => { camera.position.z = value })
 
-    let guiLogo = gui.addFolder('Logo');
-    let guiRot = guiLogo.addFolder('Logo Rotation');
-    guiRot.add(logo.rotation, 'x', -Math.PI, Math.PI, .01).name("X").onChange((value) => { logo.rotation.x = value })
-    guiRot.add(logo.rotation, 'y', -Math.PI, Math.PI, .01).name("y").onChange((value) => { logo.rotation.y = value })
-    guiRot.add(logo.rotation, 'z', -Math.PI, Math.PI, .01).name("z").onChange((value) => { logo.rotation.z = value })
-    let guiPos = guiLogo.addFolder('Logo Position');
-    guiPos.add(logo.position, 'x', -18, 18, .01).name("X").onChange((value) => { logo.position.x = value })
-    guiPos.add(logo.position, 'y', -18, 18, .01).name("y").onChange((value) => { logo.position.y = value })
-    guiPos.add(logo.position, 'z', -18, 18, .01).name("z").onChange((value) => { logo.position.z = value })
-    let guiScale = guiLogo.addFolder('Logo Scale');
-    guiScale.add(logo.scale, 'x', 0.01, 20, .01).name("X").onChange((value) => { logo.scale.set(value, value, value) })
+//     let guiLogo = gui.addFolder('Logo');
+//     let guiRot = guiLogo.addFolder('Logo Rotation');
+//     guiRot.add(logo.rotation, 'x', -Math.PI, Math.PI, .01).name("X").onChange((value) => { logo.rotation.x = value })
+//     guiRot.add(logo.rotation, 'y', -Math.PI, Math.PI, .01).name("y").onChange((value) => { logo.rotation.y = value })
+//     guiRot.add(logo.rotation, 'z', -Math.PI, Math.PI, .01).name("z").onChange((value) => { logo.rotation.z = value })
+//     let guiPos = guiLogo.addFolder('Logo Position');
+//     guiPos.add(logo.position, 'x', -18, 18, .01).name("X").onChange((value) => { logo.position.x = value })
+//     guiPos.add(logo.position, 'y', -18, 18, .01).name("y").onChange((value) => { logo.position.y = value })
+//     guiPos.add(logo.position, 'z', -18, 18, .01).name("z").onChange((value) => { logo.position.z = value })
+//     let guiScale = guiLogo.addFolder('Logo Scale');
+//     guiScale.add(logo.scale, 'x', 0.01, 20, .01).name("X").onChange((value) => { logo.scale.set(value, value, value) })
 
-    let guiHDR = gui.addFolder('HDR');
-    let guiHDRRot = guiHDR.addFolder('HDR Rotation');
-    guiHDRRot.add(HDRPivot.rotation, 'x', -Math.PI, Math.PI, .01).name("X").onChange((value) => { HDRPivot.rotation.x = value })
-    guiHDRRot.add(HDRPivot.rotation, 'y', -Math.PI, Math.PI, .01).name("y").onChange((value) => { HDRPivot.rotation.y = value })
-    guiHDRRot.add(HDRPivot.rotation, 'z', -Math.PI, Math.PI, .01).name("z").onChange((value) => { HDRPivot.rotation.z = value })
+//     let guiHDR = gui.addFolder('HDR');
+//     let guiHDRRot = guiHDR.addFolder('HDR Rotation');
+//     guiHDRRot.add(HDRPivot.rotation, 'x', -Math.PI, Math.PI, .01).name("X").onChange((value) => { HDRPivot.rotation.x = value })
+//     guiHDRRot.add(HDRPivot.rotation, 'y', -Math.PI, Math.PI, .01).name("y").onChange((value) => { HDRPivot.rotation.y = value })
+//     guiHDRRot.add(HDRPivot.rotation, 'z', -Math.PI, Math.PI, .01).name("z").onChange((value) => { HDRPivot.rotation.z = value })
 
 
 
-}
+// }
 
 
 
@@ -329,7 +329,7 @@ function loadModel() {
 
     HDRPivot.add(logo);
     logo.add(logoObj);
-    setupGUI();
+    // setupGUI();
 }
 
 const manager = new THREE.LoadingManager(loadModel);
@@ -381,7 +381,7 @@ function onProgress(xhr) {
 function onError() { }
 
 const loader = new OBJLoader(manager);
-loader.load('./models/icon-website.obj', function (obj) {
+loader.load('https://cdn.jsdelivr.net/gh/goheretech/goHere-v3/static/models/icon-website.obj', function (obj) {
 
     object = obj;
 
