@@ -337,6 +337,19 @@ const manager = new THREE.LoadingManager(loadModel);
 var button = document.getElementById("button");
 button.addEventListener("click", exportInfo);
 
+manager.onProgress = (urlOfLastItemLoaded, itemsLoaded, itemsTotal) => {
+    var loader = document.getElementById("loadBar_internal");
+    const progress = itemsLoaded / itemsTotal;
+    loader.style.width = progress*100+"%";
+
+    console.log(`Last loaded item: ${urlOfLastItemLoaded}`)
+
+    if(progress == 1)
+    {
+        loader.parentElement.parentElement.style.display = "none";
+    }
+  };
+
 // texture
 
 const textureLoader = new THREE.TextureLoader(manager);
@@ -374,12 +387,12 @@ function onProgressModel(xhr) {
         const percentComplete = xhr.loaded / xhr.total * 50;
         progressModel = percentComplete;
         progress = progressModel + progressBG;
-        loader.style.width = progress+"%";
+        // loader.style.width = progress+"%";
         console.log('model ' + Math.round(percentComplete*2, 2) + '% downloaded');
-        if(progress == 100)
-        {
-            loader.parentElement.parentElement.style.display = "none";
-        }
+        // if(progress == 100)
+        // {
+        //     loader.parentElement.parentElement.style.display = "none";
+        // }
     }
 
 }
@@ -391,12 +404,12 @@ function onProgressBG(xhr) {
         const percentComplete = xhr.loaded / xhr.total * 50;
         progressBG = percentComplete;
         progress = progressModel + progressBG;
-        loader.style.width = progress+"%";
+        // loader.style.width = progress+"%";
         console.log('bg ' + Math.round(percentComplete*2, 2) + '% downloaded');
-        if(progress == 100)
-        {
-            loader.parentElement.parentElement.style.display = "none";
-        }
+        // if(progress == 100)
+        // {
+        //     loader.parentElement.parentElement.style.display = "none";
+        // }
     }
 
 }
