@@ -46,6 +46,17 @@
             background:white;
         }
 
+        .s{
+            height:100vh;
+        }
+        #s3{
+            background:green;
+        }
+        canvas {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+  }
 
     </style>
     <link rel="stylesheet" href="style.css"></link>
@@ -68,10 +79,15 @@
 </head>
 <body>
     <canvas class="webgl"></canvas>
+    <canvas id="canvas" ></canvas>
+    <div class="s s1" id="s1"></div>
+    <div class="s s2" id="s2"></div>
+    <div class="s s3" id="s3"></div>
+    <div class="s s4" id="s4"></div>
     <div id="button" >Export Changes</div>
     <div class="loadScreen">
         <div class="loadBar">
-            <div id="loadBar_internal"></div>
+            <div id="perc"></div>
         </div>
     </div>
 </body>
