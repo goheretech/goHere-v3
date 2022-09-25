@@ -57,28 +57,28 @@ import * as THREE from "three";
       delta;
     let textureArray = {
       earth: {
-        albedo: "planet3-full.jpg",
-        roughness: "planet1/roughness.jpg",
-        normal: "planet1/normal.jpg",
-        metalness: "planet1/metalness.jpg",
-        ao: "planet1/ambientocclusion.jpg",
+        albedo: "planet3-full.jpg?raw=true",
+        roughness: "planet1/roughness.jpg?raw=true",
+        normal: "planet1/normal.jpg?raw=true",
+        metalness: "planet1/metalness.jpg?raw=true",
+        ao: "planet1/ambientocclusion.jpg?raw=true",
       },
       moon: {
-        albedo: "planet1-full.jpg",
-        roughness: "planet1/roughness.jpg",
-        normal: "planet1/normal.jpg",
-        ao: "planet1/ambientocclusion.jpg",
+        albedo: "planet1-full.jpg?raw=true",
+        roughness: "planet1/roughness.jpg?raw=true",
+        normal: "planet1/normal.jpg?raw=true",
+        ao: "planet1/ambientocclusion.jpg?raw=true",
       },
       planet: {
-        albedo: "planet1/albedo.jpg",
-        roughness: "planet1/roughness.jpg",
-        normal: "planet1/normal.jpg",
-        ao: "planet1/ambientocclusion.jpg",
+        albedo: "planet1/albedo.jpg?raw=true",
+        roughness: "planet1/roughness.jpg?raw=true",
+        normal: "planet1/normal.jpg?raw=true",
+        ao: "planet1/ambientocclusion.jpg?raw=true",
       },
       earthClouds: {
-        albedo: "clouds.png",
+        albedo: "clouds.png?raw=true",
         
-        alphaMap: "clouds.png"
+        alphaMap: "clouds.png?raw=true"
       },
     };
     
