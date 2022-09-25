@@ -86,7 +86,7 @@ import * as THREE from "three";
 
     let promiseArray = [],
       texturePromiseArray = [],
-      path = "img/Planets/",
+      path = "https://github.com/goheretech/goHere-v3/blob/master/src/img/Planets/",
       texturesArray = [];
     const fragmentShader = `
             #include <common>
