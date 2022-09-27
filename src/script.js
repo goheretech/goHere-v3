@@ -57,28 +57,29 @@ import * as THREE from "three";
       delta;
     let textureArray = {
       earth: {
-        albedo: "planet3-full.jpg?raw=true",
-        roughness: "planet1/roughness.jpg?raw=true",
-        normal: "planet1/normal.jpg?raw=true",
-        metalness: "planet1/metalness.jpg?raw=true",
-        ao: "planet1/ambientocclusion.jpg?raw=true",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754b2b8608bb41920e6_planet3-full.jpg",
+        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6333573bf3cac364c59c06c0_roughness.jpg",
+        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6333573bc58f617b72c1478b_normal.jpg",
+        
+        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6333573b9758dfbbe99083fb_ambientocclusion.jpg",
       },
       moon: {
-        albedo: "planet1-full.jpg?raw=true",
-        roughness: "planet1/roughness.jpg?raw=true",
-        normal: "planet1/normal.jpg?raw=true",
-        ao: "planet1/ambientocclusion.jpg?raw=true",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633357544cc4b76609b7a63d_planet1-full.jpg",
+        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6333573bf3cac364c59c06c0_roughness.jpg",
+        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6333573bc58f617b72c1478b_normal.jpg",
+        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6333573b9758dfbbe99083fb_ambientocclusion.jpg",
       },
       planet: {
-        albedo: "planet1/albedo.jpg?raw=true",
-        roughness: "planet1/roughness.jpg?raw=true",
-        normal: "planet1/normal.jpg?raw=true",
-        ao: "planet1/ambientocclusion.jpg?raw=true",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6333573bc58f6174aac1478a_albedo.jpg",
+        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6333573bf3cac364c59c06c0_roughness.jpg",
+        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6333573bc58f617b72c1478b_normal.jpg",
+        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6333573bc9cb3c3e6eb6c1cf_metalness.jpg",
+        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6333573b9758dfbbe99083fb_ambientocclusion.jpg",
       },
       earthClouds: {
-        albedo: "clouds.png?raw=true",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
         
-        alphaMap: "clouds.png?raw=true"
+        alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png"
       },
     };
     
@@ -86,7 +87,7 @@ import * as THREE from "three";
 
     let promiseArray = [],
       texturePromiseArray = [],
-      path = "https://github.com/goheretech/goHere-v3/blob/master/src/img/Planets/",
+      path = "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/space%2F",
       texturesArray = [];
     const fragmentShader = `
             #include <common>
@@ -236,27 +237,27 @@ import * as THREE from "three";
       let texturePromise = new Promise(function (resolve, reject) {
         textureCache = {
           earth: {
-            albedo: textureLoader.load(path + textureArray.earth.albedo),
-            roughness: textureLoader.load(path + textureArray.earth.roughness),
-            normal: textureLoader.load(path + textureArray.earth.normal),
-            metalness: textureLoader.load(path + textureArray.earth.metalness),
-            ao: textureLoader.load(path + textureArray.earth.ao),
+            albedo: textureLoader.load(textureArray.earth.albedo),
+            roughness: textureLoader.load(textureArray.earth.roughness),
+            normal: textureLoader.load(textureArray.earth.normal),
+            metalness: textureLoader.load(textureArray.earth.metalness),
+            ao: textureLoader.load(textureArray.earth.ao),
           },
           moon: {
-            albedo: textureLoader.load(path + textureArray.moon.albedo),
-            roughness: textureLoader.load(path + textureArray.moon.roughness),
-            normal: textureLoader.load(path + textureArray.moon.normal),
-            ao: textureLoader.load(path + textureArray.moon.ao),
+            albedo: textureLoader.load(textureArray.moon.albedo),
+            roughness: textureLoader.load(textureArray.moon.roughness),
+            normal: textureLoader.load(textureArray.moon.normal),
+            ao: textureLoader.load(textureArray.moon.ao),
           },
           planet: {
-            albedo: textureLoader.load(path + textureArray.planet.albedo),
-            roughness: textureLoader.load(path + textureArray.planet.roughness),
-            normal: textureLoader.load(path + textureArray.planet.normal),
-            ao: textureLoader.load(path + textureArray.planet.ao),
+            albedo: textureLoader.load(textureArray.planet.albedo),
+            roughness: textureLoader.load(textureArray.planet.roughness),
+            normal: textureLoader.load(textureArray.planet.normal),
+            ao: textureLoader.load(textureArray.planet.ao),
           },
           earthClouds: {
-            albedo: textureLoader.load(path + textureArray.earthClouds.albedo),
-            alphaMap: textureLoader.load(path + textureArray.earthClouds.alphaMap),
+            albedo: textureLoader.load(textureArray.earthClouds.albedo),
+            alphaMap: textureLoader.load(textureArray.earthClouds.alphaMap),
           },
         };
         if (textureCache) {
@@ -290,16 +291,16 @@ import * as THREE from "three";
       };
       const textureLoader = new THREE.TextureLoader(manager);
 
-      // texEarth = textureLoader.load(path + textureArray[0].albedo);
-      texMoon = textureLoader.load(path + textureArray[1].albedo);
-      texPlanet = textureLoader.load(path + textureArray[2].albedo);
-      texPlanetAtmo = textureLoader.load(path + textureArray[3].albedo);
-      let planet1Albedo = textureLoader.load(path + planetTextures1[0].albedo);
+      // texEarth = textureLoader.load(textureArray[0].albedo);
+      texMoon = textureLoader.load(textureArray[1].albedo);
+      texPlanet = textureLoader.load(textureArray[2].albedo);
+      texPlanetAtmo = textureLoader.load(textureArray[3].albedo);
+      let planet1Albedo = textureLoader.load(planetTextures1[0].albedo);
       let planet1Roughness = textureLoader.load(
-        path + planetTextures1[1].albedo
+        planetTextures1[1].albedo
       );
-      let planet1Normal = textureLoader.load(path + planetTextures1[2].albedo);
-      let planet1AOMap = textureLoader.load(path + planetTextures1[3].albedo);
+      let planet1Normal = textureLoader.load(planetTextures1[2].albedo);
+      let planet1AOMap = textureLoader.load(planetTextures1[3].albedo);
 
       // console.log(earth);
       // console.log(moon);
@@ -312,7 +313,7 @@ import * as THREE from "three";
         texturePromiseArray.push(
           new Promise(function (resolve, reject) {
             loader.load(
-              path + fileOBJ.url,
+              fileOBJ.url,
 
               function (texture) {
                 loadProgress();
