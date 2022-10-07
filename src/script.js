@@ -41,11 +41,11 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "planet1/albedo.jpg",
-        roughness: "planet1/roughness.jpg",
-        normal: "planet1/normal.jpg",
-        metalness: "planet1/metalness.jpg",
-        ao: "planet1/ambientocclusion.jpg",
+        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Falbedo.jpg?alt=media",
+        roughness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Froughness.jpg?alt=media",
+        normal: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fnormal.jpg?alt=media",
+        metalness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fmetalness.jpg?alt=media",
+        ao: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fambientocclusion.jpg?alt=media",
       },
       rotationSpeed: 1,
       cache: {
@@ -67,11 +67,11 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "planet1/albedo.jpg",
-        roughness: "planet1/roughness.jpg",
-        normal: "planet1/normal.jpg",
-        metalness: "planet1/metalness.jpg",
-        ao: "planet1/ambientocclusion.jpg",
+        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Falbedo.jpg?alt=media",
+        roughness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Froughness.jpg?alt=media",
+        normal: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fnormal.jpg?alt=media",
+        metalness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fmetalness.jpg?alt=media",
+        ao: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fambientocclusion.jpg?alt=media",
       },
       rotationSpeed: 1.2,
       cache: {
@@ -93,11 +93,11 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "planet1/albedo.jpg",
-        roughness: "planet1/roughness.jpg",
-        normal: "planet1/normal.jpg",
-        metalness: "planet1/metalness.jpg",
-        ao: "planet1/ambientocclusion.jpg",
+        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Falbedo.jpg?alt=media",
+        roughness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Froughness.jpg?alt=media",
+        normal: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fnormal.jpg?alt=media",
+        metalness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fmetalness.jpg?alt=media",
+        ao: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fambientocclusion.jpg?alt=media",
       },
       rotationSpeed: 1.6,
       cache: {
@@ -119,8 +119,8 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "clouds.jpg",
-        alphaMap: "clouds.jpg",
+        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
+        alphaMap: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
       },
       rotationSpeed: 3.4,
       cache: {
