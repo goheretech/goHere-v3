@@ -5,9 +5,7 @@ import * as dat from "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.m
 let camera,
   scene = new THREE.Scene(),
   renderer,
-  canvas,
-  material,
-  geometry,topPixel,bottomPixel,scrollPosition, percent,ambientLight;
+  canvas,topPixel,bottomPixel,scrollPosition, percent,ambientLight;
 
 let loader = new THREE.TextureLoader();
 let MAIN, MAINCLOUDS, MOON, MOONCLOUDS, EARTH, EARTHCLOUDS;
@@ -20,16 +18,25 @@ GetContainerInfo('#rail-planets','.l','#cart-planets');
 let
   CAMERA= {
     position: {
-      0: new THREE.Vector3(299, -4.72, 771),
-      1: new THREE.Vector3(139, 47, -87),
-      2: new THREE.Vector3(145.6, 45.51, -212.22),
+      0: new THREE.Vector3(299, 30, 771),
+      1: new THREE.Vector3(299, -4.72, 771),
+      2: new THREE.Vector3(210, 232.55, -508.24),
+      3: new THREE.Vector3(311.49, 219, -621.35),
+      4: new THREE.Vector3(311.49, 218.01, -621.35),
+    },
+    rotation: {
+      0: new THREE.Vector3(0.1,0,0),
+      1: new THREE.Vector3(0,0,0),
+      2: new THREE.Vector3(0,0,0),
+      3: new THREE.Vector3(0,.78,0), 
+      4: new THREE.Vector3(0,.78,0), 
     },
   },
   SUN= {
     mesh: undefined,
     pivot: undefined,
     orbitDistance: 150000,
-    period: [1.4, (2*Math.PI)-1.1, -.82],
+    period: [3.61,1.4, -1.38, -.82, -2.48],
     tilt: 0.2,
   };
 
@@ -58,7 +65,7 @@ let
       size: 140,
       detail: 25,
       orbitDistance: 0,
-      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI],
+      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI],
       tilt: 0 * Math.PI,
     },
     moon: {
@@ -83,9 +90,9 @@ let
       parent: "main",
       size: 22,
       detail: 20,
-      orbitDistance: 260,
-      period: [-5.53, -3.88, -3.6],
-      tilt: 0.21,
+      orbitDistance: 710,
+      period: [2.37, 2.37, 2.78, 2.78,2.78],
+      tilt: 0.35,
     },
     earth: {
       name: "earth",
@@ -109,8 +116,8 @@ let
       parent: "moon",
       size: 0.5,
       detail: 20,
-      orbitDistance:32.8,
-      period: [-2.6,-3.87,-1.54],
+      orbitDistance:60,
+      period: [-2.6,-2.6,1.63,-1.24,-1.24],
       tilt: 0.42,
     },
     mainClouds: {
@@ -131,7 +138,7 @@ let
       size: 142,
       detail: 25,
       orbitDistance: 0,
-      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI],
+      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI0 * Math.PI,0 * Math.PI,],
       tilt: 0 * Math.PI,
     },
     moonClouds: {
@@ -152,7 +159,7 @@ let
       size: 22.5,
       detail: 20,
       orbitDistance: 0,
-      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI],
+      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI],
       tilt: 0 * Math.PI,
     },
     earthClouds: {
@@ -173,7 +180,7 @@ let
       size: 0.51,
       detail: 20,
       orbitDistance: 0,
-      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI],
+      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI],
       tilt: 0 * Math.PI,
     },
   };
@@ -576,7 +583,7 @@ function generateSpace() {
 }
 function GenerateAmbient()
 {
-  ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+  ambientLight = new THREE.AmbientLight(0xffffff, 0.15);
   scene.add(ambientLight);
 }
 function GenerateSun() {
@@ -773,31 +780,46 @@ function ScrollThrough()
       percent = GetPercent(scrollPosition, topPixel, bottomPixel);
       percent = clamp(percent, 0, 100);
       console.log("Scrolled: " + percent+"%");
-
-      if(percent<50)
+      let sections = PLANETS.main.period.length-1;
+      if(percent<(100/sections))
       {
-        let p = percent*2;
+        let p = percent*sections;
         console.log('Section 1: '+p);
         let v=p/100;
-        LerpCamera(0, v);
-        LerpPivot(MAIN, 0, v);
-        LerpPivot(EARTH, 0, v);
-        LerpPivot(MOON, 0, v);
-        LerpPositionSun(0, v);
+        LerpAll(0,v);
+
+      }else if(percent<(100/sections)*2)
+      {
+        let p = (percent-(100/sections))*sections;
+        console.log('Section 2: '+p);
+        let v=p/100;
+        LerpAll(1,v);
+
+      }else if(percent<(100/sections)*3)
+      {
+        let p = (percent-(100/sections)*2)*sections;
+        console.log('Section 3: '+p);
+        let v=p/100;
+        LerpAll(2,v);
 
       }else if(percent<=100)
       {
-        let p = (percent-(50))*2;
-        console.log('Section 2: '+p);
+        let p = (percent-(100/sections)*3)*sections;
+        console.log('Section 4: '+p);
         let v=p/100;
-        LerpCamera(1, v);
-        LerpPivot(MAIN, 1, v);
-        LerpPivot(EARTH, 1, v);
-        LerpPivot(MOON, 1, v);
-        LerpPositionSun(1, v);
+        LerpAll(3,v);
       }
 
-      function LerpCamera(i, v) {
+  function LerpAll(x,v) {
+    LerpCameraPosition(x, v);
+    LerpCameraRotation(x, v);
+    LerpPivot(MAIN, x, v);
+    LerpPivot(EARTH, x, v);
+    LerpPivot(MOON, x, v);
+    LerpPositionSun(x, v);
+  }
+
+      function LerpCameraPosition(i, v) {
         camera.position.x = lerp(
           CAMERA.position[i].x,
           CAMERA.position[i + 1].x,
@@ -811,6 +833,24 @@ function ScrollThrough()
         camera.position.z = lerp(
           CAMERA.position[i].z,
           CAMERA.position[i + 1].z,
+          v
+        );
+      }
+
+      function LerpCameraRotation(i, v) {
+        camera.rotation.x = lerp(
+          CAMERA.rotation[i].x,
+          CAMERA.rotation[i + 1].x,
+          v
+        );
+        camera.rotation.y = lerp(
+          CAMERA.rotation[i].y,
+          CAMERA.rotation[i + 1].y,
+          v
+        );
+        camera.rotation.z = lerp(
+          CAMERA.rotation[i].z,
+          CAMERA.rotation[i + 1].z,
           v
         );
       }
@@ -848,6 +888,13 @@ function GetPercent(sp, t, b) {
  
 
 function lerp(min, max, value) {
-  return (max - min) * value + min;
+  return (max - min) * easeInOut(value) + min;
+}
+
+function easeInOut(x)
+{
+  
+  return -(Math.cos(Math.PI * x) - 1) / 2;
+    
 }
 function removeLoad() {}
