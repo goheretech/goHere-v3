@@ -119,8 +119,8 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
-        alphaMap: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
+        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fhttps://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media?alt=media",
+        alphaMap: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fhttps://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media?alt=media",
       },
       rotationSpeed: 3.4,
       cache: {
@@ -140,8 +140,8 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "clouds.jpg",
-        alphaMap: "clouds.jpg",
+        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
+        alphaMap: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
       },
       rotationSpeed: 3.4,
       cache: {
@@ -161,8 +161,8 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "clouds.jpg",
-        alphaMap: "clouds.jpg",
+        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
+        alphaMap: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
       },
       rotationSpeed: 3.4,
       cache: {
@@ -190,7 +190,7 @@ let clock = new THREE.Clock();
 
 // let textureCache = new Object();
 
-let path = "img/Planets/";
+let path = "";
 const fragmentShader = `
             #include <common>
             #define TWO_PI 6.28318530718
