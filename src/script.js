@@ -42,9 +42,9 @@ let
       empty: undefined,
       texture: {
         albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f1f9c637c2dccff815_albedo.jpg",
-        roughness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Froughness.jpg?alt=media",
+        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
         normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f18e67ca2d7f0b83d5_normal.jpg",
-        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
+        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0e5d16b2038d6cf55_metalness.jpg",
         ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0d278a13ae7404f15_ambientocclusion.jpg",
       },
       rotationSpeed: 1,
@@ -68,9 +68,9 @@ let
       empty: undefined,
       texture: {
         albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f1f9c637c2dccff815_albedo.jpg",
-        roughness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Froughness.jpg?alt=media",
+        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
         normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f18e67ca2d7f0b83d5_normal.jpg",
-        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
+        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0e5d16b2038d6cf55_metalness.jpg",
         ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0d278a13ae7404f15_ambientocclusion.jpg",
       },
       rotationSpeed: 1.2,
@@ -94,9 +94,9 @@ let
       empty: undefined,
       texture: {
         albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f1f9c637c2dccff815_albedo.jpg",
-        roughness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Froughness.jpg?alt=media",
+        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
         normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f18e67ca2d7f0b83d5_normal.jpg",
-        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
+        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0e5d16b2038d6cf55_metalness.jpg",
         ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0d278a13ae7404f15_ambientocclusion.jpg",
       },
       rotationSpeed: 1.6,
@@ -177,8 +177,44 @@ let
       tilt: 0 * Math.PI,
     },
   };
-  
 
+  let path = "";
+
+  PLANETS.main.texture = {
+    albedo: "img/Planets/planet1/albedo.jpg",
+    roughness: "img/Planets/planet1/roughness.jpg",
+    normal: "img/Planets/planet1/normal.jpg",
+    metalness: "img/Planets/planet1/metalness.jpg",
+    ao: "img/Planets/planet1/ambientocclusion.jpg",
+  };
+  PLANETS.moon.texture = {
+    albedo: "img/Planets/planet1/albedo.jpg",
+    roughness: "img/Planets/planet1/roughness.jpg",
+    normal: "img/Planets/planet1/normal.jpg",
+    metalness: "img/Planets/planet1/metalness.jpg",
+    ao: "img/Planets/planet1/ambientocclusion.jpg",
+  };
+  PLANETS.earth.texture = {
+    albedo: "img/Planets/planet1/albedo.jpg",
+    roughness: "img/Planets/planet1/roughness.jpg",
+    normal: "img/Planets/planet1/normal.jpg",
+    metalness: "img/Planets/planet1/metalness.jpg",
+    ao: "img/Planets/planet1/ambientocclusion.jpg",
+  };
+  PLANETS.mainClouds.texture = {
+    albedo: "img/Planets/clouds.jpg",
+    alphaMap: "img/Planets/clouds.jpg"
+  };
+  PLANETS.moonClouds.texture = {
+    albedo: "img/Planets/clouds.jpg",
+    alphaMap: "img/Planets/clouds.jpg"
+  };
+  PLANETS.earthClouds.texture = {
+    albedo: "img/Planets/clouds.jpg",
+    alphaMap: "img/Planets/clouds.jpg"
+  };
+  
+  path = "";
 
 let uniforms;
 
@@ -190,7 +226,9 @@ let clock = new THREE.Clock();
 
 // let textureCache = new Object();
 
-let path = "";
+
+
+
 const fragmentShader = `
             #include <common>
             #define TWO_PI 6.28318530718
