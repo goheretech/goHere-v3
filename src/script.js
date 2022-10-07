@@ -467,7 +467,7 @@ function createClouds(pos, num, x, y, z) {
 function loadTextures() {
   const manager = new THREE.LoadingManager();
   manager.onProgress = (urlOfLastItemLoaded, itemsLoaded, itemsTotal) => {
-    var loader = document.getElementById("loadBar_internal");
+    var loader = document.getElementById("loadbar_internal");
     const progress = itemsLoaded / itemsTotal;
     loader.style.width = progress * 100 + "%";
     console.log(`Last loaded item: ${urlOfLastItemLoaded}`);
