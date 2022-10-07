@@ -41,11 +41,11 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Falbedo.jpg?alt=media",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f1f9c637c2dccff815_albedo.jpg",
         roughness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Froughness.jpg?alt=media",
-        normal: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fnormal.jpg?alt=media",
-        metalness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fmetalness.jpg?alt=media",
-        ao: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fambientocclusion.jpg?alt=media",
+        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f18e67ca2d7f0b83d5_normal.jpg",
+        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
+        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0d278a13ae7404f15_ambientocclusion.jpg",
       },
       rotationSpeed: 1,
       cache: {
@@ -67,11 +67,11 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Falbedo.jpg?alt=media",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f1f9c637c2dccff815_albedo.jpg",
         roughness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Froughness.jpg?alt=media",
-        normal: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fnormal.jpg?alt=media",
-        metalness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fmetalness.jpg?alt=media",
-        ao: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fambientocclusion.jpg?alt=media",
+        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f18e67ca2d7f0b83d5_normal.jpg",
+        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
+        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0d278a13ae7404f15_ambientocclusion.jpg",
       },
       rotationSpeed: 1.2,
       cache: {
@@ -93,11 +93,11 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Falbedo.jpg?alt=media",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f1f9c637c2dccff815_albedo.jpg",
         roughness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Froughness.jpg?alt=media",
-        normal: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fnormal.jpg?alt=media",
-        metalness: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fmetalness.jpg?alt=media",
-        ao: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fambientocclusion.jpg?alt=media",
+        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f18e67ca2d7f0b83d5_normal.jpg",
+        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
+        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0d278a13ae7404f15_ambientocclusion.jpg",
       },
       rotationSpeed: 1.6,
       cache: {
@@ -119,8 +119,8 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fhttps://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media?alt=media",
-        alphaMap: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fhttps://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media?alt=media",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
+        alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
       },
       rotationSpeed: 3.4,
       cache: {
@@ -140,8 +140,8 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
-        alphaMap: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
+        alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
       },
       rotationSpeed: 3.4,
       cache: {
@@ -161,8 +161,8 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
-        alphaMap: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fplanet%2Fclouds.jpg?alt=media",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
+        alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
       },
       rotationSpeed: 3.4,
       cache: {
