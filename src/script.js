@@ -180,39 +180,39 @@ let
 
   let path = "";
 
-  PLANETS.main.texture = {
-    albedo: "img/Planets/planet1/albedo.jpg",
-    roughness: "img/Planets/planet1/roughness.jpg",
-    normal: "img/Planets/planet1/normal.jpg",
-    metalness: "img/Planets/planet1/metalness.jpg",
-    ao: "img/Planets/planet1/ambientocclusion.jpg",
-  };
-  PLANETS.moon.texture = {
-    albedo: "img/Planets/planet1/albedo.jpg",
-    roughness: "img/Planets/planet1/roughness.jpg",
-    normal: "img/Planets/planet1/normal.jpg",
-    metalness: "img/Planets/planet1/metalness.jpg",
-    ao: "img/Planets/planet1/ambientocclusion.jpg",
-  };
-  PLANETS.earth.texture = {
-    albedo: "img/Planets/planet1/albedo.jpg",
-    roughness: "img/Planets/planet1/roughness.jpg",
-    normal: "img/Planets/planet1/normal.jpg",
-    metalness: "img/Planets/planet1/metalness.jpg",
-    ao: "img/Planets/planet1/ambientocclusion.jpg",
-  };
-  PLANETS.mainClouds.texture = {
-    albedo: "img/Planets/clouds.jpg",
-    alphaMap: "img/Planets/clouds.jpg"
-  };
-  PLANETS.moonClouds.texture = {
-    albedo: "img/Planets/clouds.jpg",
-    alphaMap: "img/Planets/clouds.jpg"
-  };
-  PLANETS.earthClouds.texture = {
-    albedo: "img/Planets/clouds.jpg",
-    alphaMap: "img/Planets/clouds.jpg"
-  };
+  // PLANETS.main.texture = {
+  //   albedo: "img/Planets/planet1/albedo.jpg",
+  //   roughness: "img/Planets/planet1/roughness.jpg",
+  //   normal: "img/Planets/planet1/normal.jpg",
+  //   metalness: "img/Planets/planet1/metalness.jpg",
+  //   ao: "img/Planets/planet1/ambientocclusion.jpg",
+  // };
+  // PLANETS.moon.texture = {
+  //   albedo: "img/Planets/planet1/albedo.jpg",
+  //   roughness: "img/Planets/planet1/roughness.jpg",
+  //   normal: "img/Planets/planet1/normal.jpg",
+  //   metalness: "img/Planets/planet1/metalness.jpg",
+  //   ao: "img/Planets/planet1/ambientocclusion.jpg",
+  // };
+  // PLANETS.earth.texture = {
+  //   albedo: "img/Planets/planet1/albedo.jpg",
+  //   roughness: "img/Planets/planet1/roughness.jpg",
+  //   normal: "img/Planets/planet1/normal.jpg",
+  //   metalness: "img/Planets/planet1/metalness.jpg",
+  //   ao: "img/Planets/planet1/ambientocclusion.jpg",
+  // };
+  // PLANETS.mainClouds.texture = {
+  //   albedo: "img/Planets/clouds.jpg",
+  //   alphaMap: "img/Planets/clouds.jpg"
+  // };
+  // PLANETS.moonClouds.texture = {
+  //   albedo: "img/Planets/clouds.jpg",
+  //   alphaMap: "img/Planets/clouds.jpg"
+  // };
+  // PLANETS.earthClouds.texture = {
+  //   albedo: "img/Planets/clouds.jpg",
+  //   alphaMap: "img/Planets/clouds.jpg"
+  // };
   
   path = "";
 
