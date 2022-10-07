@@ -12,7 +12,7 @@ let camera,
 let loader = new THREE.TextureLoader();
 let MAIN, MAINCLOUDS, MOON, MOONCLOUDS, EARTH, EARTHCLOUDS;
 
-GetContainerInfo('.rail','.l','.cart');
+GetContainerInfo('#rail-planets','.l','#cart-planets');
 //
 //
 //
