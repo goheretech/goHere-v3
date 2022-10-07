@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      fs-cmsnest-collection="services"
+      role="list"
+      class="collection-list-6 w-dyn-items"
+    >
+      <div role="listitem" class="collection-item-4 w-dyn-item">
+        <a
+          style="color: hsla(253, 79.92%, 44.83%, 1)"
+          href="/services/application-development"
+          class="link-2"
+          >Application Development</a
+        >
+      </div>
+      <div role="listitem" class="collection-item-4 w-dyn-item">
+        <a
+          style="color: hsla(277, 71.65%, 42.33%, 1)"
+          href="/services/full-stack-web-development"
+          class="link-2"
+          >Full Stack Web Development</a
+        >
+      </div>
+      <div role="listitem" class="collection-item-4 w-dyn-item">
+        <a
+          style="color: hsla(349, 85.12%, 46.82%, 1)"
+          href="/services/public-relations"
+          class="link-2"
+          >Public Relations</a
+        >
+      </div>
+      <div role="listitem" class="collection-item-4 w-dyn-item">
+        <a
+          style="color: hsla(118, 85.89%, 32.99%, 1)"
+          href="/services/lead-generation"
+          class="link-2"
+          >Lead Generation</a
+        >
+      </div>
+      <div role="listitem" class="collection-item-4 w-dyn-item">
+        <a
+          style="color: hsla(230, 100%, 39.28%, 1)"
+          href="/services/conversion-rate-optimization"
+          class="link-2"
+          >Conversion Rate Optimization</a
+        >
+      </div>
+      <div role="listitem" class="collection-item-4 w-dyn-item">
+        <a
+          style="color: hsla(310, 85.89%, 40.17%, 1)"
+          href="/services/mixed-reality"
+          class="link-2"
+          >Mixed Reality</a
+        >
+      </div>
+      <div role="listitem" class="collection-item-4 w-dyn-item">
+        <a
+          style="color: hsla(31, 89.03%, 40.21%, 1)"
+          href="/services/augmented-reality"
+          class="link-2"
+          >Augmented Reality</a
+        >
+      </div>
+      <div role="listitem" class="collection-item-4 w-dyn-item">
+        <a
+          style="color: hsla(184, 90.64%, 39.17%, 1)"
+          href="/services/technology-consulting"
+          class="link-2"
+          >Technology Consulting</a
+        >
+      </div>
+    </div>
+  </body>
+  <script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
+  <script>
+
+    var items = $(".collection-item-4");
+    
+    for (let i = 0; i < items.length; i++) {
+        const rand = Math.floor(Math.random() * 21);
+        const element = items[i];
+        element.style.marginLeft = rand*3.5+"px";
+    }
+    
+
+
+  </script>
+</html>

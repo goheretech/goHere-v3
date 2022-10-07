@@ -6,13 +6,13 @@
     <title>goHere v3
     </title>
     <style>
-        #button{
+        #startButton{
             padding:10px 15px;
-            border: 1px solid white;
+            border: 1px solid rgb(0, 0, 0);
             position:absolute;
             bottom: 40px;
             right:40px;
-            color:white;
+            color:rgb(0, 0, 0);
             cursor:pointer;
         }
 
@@ -49,13 +49,30 @@
         .s{
             height:100vh;
         }
-        #s3{
-            background:green;
-        }
+      
         canvas {
-    position: fixed;
-    z-index: 1;
-    top: 0;
+            z-index: 1;
+            top: 0;
+            /* z-index:999999999; */
+            position:fixed;
+        }
+
+        #gui{position: fixed; top:10px; left:4px; z-index:9999999;}
+
+  body{
+    background:rgb(0, 0, 0) url('img/Planets/space1x.png');
+    background-attachment: fixed;
+  }
+
+  .rail{
+    height:400vh;
+    position: relative;
+  }
+  .cart{
+    height:100vh;
+    width:100%;
+    position:sticky;
+    top:0px;
   }
 
     </style>
@@ -78,18 +95,19 @@
     
 </head>
 <body>
+    <div class="l"></div><div class="rail"><div class="cart"></div></div>
     <canvas class="webgl"></canvas>
+  
+    </video>
     <canvas id="canvas" ></canvas>
-    <div class="s s1" id="s1"></div>
-    <div class="s s2" id="s2"></div>
-    <div class="s s3" id="s3"></div>
-    <div class="s s4" id="s4"></div>
-    <div id="button" >Export Changes</div>
-    <div class="loadScreen">
-        <div class="loadBar">
-            <div id="perc"></div>
-        </div>
-    </div>
+    
+    <div id="startButton" >Export Changes</div>
+    <div class="loadScreen"><div class="loadBar"><div id="loadBar_internal"></div></div></div>
 </body>
+<script
+    src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"
+  ></script>
 <script type="module" src="script.js"></script>
 </html>

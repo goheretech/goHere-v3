@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>goHere v3
+    </title>
+    <style>
+        #startButton{
+            padding:10px 15px;
+            border: 1px solid rgb(0, 0, 0);
+            position:absolute;
+            bottom: 40px;
+            right:40px;
+            color:rgb(0, 0, 0);
+            cursor:pointer;
+        }
+
+        .loadScreen
+        {
+            background:black;
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index:99;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .loadBar
+        {
+            border:1px solid white;
+            width:600px;
+            height:20px;
+            position: relative;
+        }  
+        #loadBar_internal{
+            position:absolute;
+            left:0;
+            top:0;
+            bottom:0;
+            width:0%;
+            background:white;
+        }
+
+        .s{
+            height:100vh;
+        }
+      
+        canvas {
+            z-index: 1;
+            top: 0;
+            z-index:999999999;
+        }
+
+  body{
+    /* background:white url('goHere-v3\src\img\Planets\space1x.png'); */
+  }
+
+    </style>
+    <link rel="stylesheet" href="style.css"></link>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.141.0/build/three.module.js",
+                "OBJLoader": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/OBJLoader.js",
+                "GLTFLoader": "https://unpkg.com/three@0.125.2/examples/js/loaders/GLTFLoader.js",
+                "EXRLoader": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/EXRLoader.js",
+                "RenderPass": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/RenderPass.js",
+                "UnrealBloomPass": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+                "EffectComposer": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/EffectComposer.js",
+                "dat.gui": "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.js"
+            }
+        }
+    </script>
+    
+    
+</head>
+<body>
+    
+    <canvas class="webgl"></canvas>
+    <video id="albedo" loop crossOrigin="anonymous" playsinline style="display:none">
+        <source src="img\texture.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+    </video>
+    <video id="roughness" loop crossOrigin="anonymous" playsinline style="display:none">
+        <source src="img\roughness.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+    </video>
+    <canvas id="canvas" ></canvas>
+    
+    <div id="startButton" >Export Changes</div>
+    
+</body>
+<script type="module" src="hero.js"></script>
+</html>
