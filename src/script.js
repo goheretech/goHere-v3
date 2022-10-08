@@ -40,6 +40,25 @@ let
     tilt: 0.2,
   };
 
+  let RINGS = {
+    mesh: undefined,
+    texture: {
+      albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9e498f0f60f2743dd75_albedo.jpg",
+    alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9e4da79c9192eadb5ce_alpha.jpg"
+    },
+    cache: {
+      albedo: undefined,
+      roughness: undefined,
+      normal: undefined,
+      ao: undefined,
+      alphaMap: undefined,
+    },
+    parent: "moon",
+      size: 50,
+      detail: 60,
+      tilt: 0,
+  }
+
   // SUN.tilt
   let PLANETS = {
     main: {
@@ -74,11 +93,10 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f1f9c637c2dccff815_albedo.jpg",
-        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
-        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f18e67ca2d7f0b83d5_normal.jpg",
-        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0e5d16b2038d6cf55_metalness.jpg",
-        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0d278a13ae7404f15_ambientocclusion.jpg",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9be98f0f6390843daeb_albedo.jpg",
+        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9bde3265c1934319f6b_roughness.jpg",
+        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9be3b96bc14b560acad_normal.jpg",
+        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9bee3265ca86c319f6c_ao.jpg",
       },
       rotationSpeed: 1.2,
       cache: {
@@ -100,11 +118,10 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f1f9c637c2dccff815_albedo.jpg",
-        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
-        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f18e67ca2d7f0b83d5_normal.jpg",
-        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0e5d16b2038d6cf55_metalness.jpg",
-        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0d278a13ae7404f15_ambientocclusion.jpg",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a698f0f6314c43da43_albedo.jpg",
+        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a62c7f35550916747a_roughness.jpg",
+        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a7e3265c79f6319f47_normal.jpg",
+        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a73b96bc12ed60aba0_ao.jpg",
       },
       rotationSpeed: 1.6,
       cache: {
@@ -147,8 +164,8 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
-        alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9beb9d4cec06b9c861b_clouds.jpg",
+        alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9be44f1dcd78c6f1288_clouds-alpha.jpg"
       },
       rotationSpeed: 3.4,
       cache: {
@@ -156,8 +173,8 @@ let
         alphaMap: undefined,
       },
       parent: "moon",
-      size: 22.5,
-      detail: 20,
+      size: 22.1,
+      detail: 40,
       orbitDistance: 0,
       period: [0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI],
       tilt: 0 * Math.PI,
@@ -168,8 +185,8 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
-        alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a7eae8f4a52077e133_clouds.jpg",
+    alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a704a965150a6abe25_clouds-alpha.jpg"
       },
       rotationSpeed: 3.4,
       cache: {
@@ -195,30 +212,29 @@ let
   //   ao: "img/Planets/planet1/ambientocclusion.jpg",
   // };
   // PLANETS.moon.texture = {
-  //   albedo: "img/Planets/planet1/albedo.jpg",
-  //   roughness: "img/Planets/planet1/roughness.jpg",
-  //   normal: "img/Planets/planet1/normal.jpg",
-  //   metalness: "img/Planets/planet1/metalness.jpg",
-  //   ao: "img/Planets/planet1/ambientocclusion.jpg",
+  //   albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9be98f0f6390843daeb_albedo.jpg",
+  //   roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9bde3265c1934319f6b_roughness.jpg",
+  //   normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9be3b96bc14b560acad_normal.jpg",
+  //   ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9bee3265ca86c319f6c_ao.jpg",
   // };
   // PLANETS.earth.texture = {
-  //   albedo: "img/Planets/planet1/albedo.jpg",
-  //   roughness: "img/Planets/planet1/roughness.jpg",
-  //   normal: "img/Planets/planet1/normal.jpg",
-  //   metalness: "img/Planets/planet1/metalness.jpg",
-  //   ao: "img/Planets/planet1/ambientocclusion.jpg",
+  //   albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a698f0f6314c43da43_albedo.jpg",
+  //   roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a62c7f35550916747a_roughness.jpg",
+  //   normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a7e3265c79f6319f47_normal.jpg",
+  //   ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a73b96bc12ed60aba0_ao.jpg",
   // };
   // PLANETS.mainClouds.texture = {
   //   albedo: "img/Planets/clouds.jpg",
   //   alphaMap: "img/Planets/clouds.jpg"
   // };
   // PLANETS.moonClouds.texture = {
-  //   albedo: "img/Planets/clouds.jpg",
-  //   alphaMap: "img/Planets/clouds.jpg"
+    
+  //   albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9beb9d4cec06b9c861b_clouds.jpg",
+  //   alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9be44f1dcd78c6f1288_clouds-alpha.jpg"
   // };
   // PLANETS.earthClouds.texture = {
-  //   albedo: "img/Planets/clouds.jpg",
-  //   alphaMap: "img/Planets/clouds.jpg"
+  //   albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a7eae8f4a52077e133_clouds.jpg",
+  //   alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a704a965150a6abe25_clouds-alpha.jpg"
   // };
   
   path = "";
@@ -530,6 +546,7 @@ function loadTextures() {
     GetTextures(MAINCLOUDS);
     GetTextures(MOONCLOUDS);
     GetTextures(EARTHCLOUDS);
+    GetTextures(RINGS);
 
     function GetTextures(planet) {
       planet.textureCache = {
@@ -575,6 +592,7 @@ function generateSpace() {
   GeneratePlanet("mainClouds");
   GeneratePlanet("moonClouds");
   GeneratePlanet("earthClouds");
+  GenerateRings(RINGS);
   renderer.render(scene, camera);
   requestAnimationFrame(render);
   window.addEventListener("scroll", onScroll);
@@ -597,7 +615,7 @@ function GenerateSun() {
   // let sun = new THREE.PointLight(0xeee4f5, 1.1, 15000000, 0.01);
   let sun = new THREE.PointLight(0xeee4f5, 1.1, 15000000, 0.01);
   sun.add(new THREE.Mesh(sunGeo, sunMat));
-  sun.castShadow = false;
+  // sun.castShadow = true;
 
   sun.shadow.mapSize.width = 262144; // default
   sun.shadow.mapSize.height = 262144; // default
@@ -640,11 +658,13 @@ function GeneratePlanet(planet) {
   {
     planetMat = new THREE.MeshStandardMaterial({
       color:0xffffff,
+      map:cache.albedo,
       alphaMap:cache.alphaMap,
       transparent: true,
       metalness: 0.0,
       roughness: 0.5,
     });
+
   }
   let planetGeo = new THREE.SphereGeometry(
     planetDetails.size,
@@ -652,8 +672,12 @@ function GeneratePlanet(planet) {
     planetDetails.detail
   );
   let planetMesh = new THREE.Mesh(planetGeo, planetMat);
-  planetMesh.castShadow = true;
-  planetMesh.receiveShadow = true;
+  
+
+  if (planet != 'mainClouds' || planet != 'moonClouds' || planet != 'earthClouds')
+  {
+    planetMesh.castShadow = true;
+  }
   // pivot.rotation.z = (Math.PI / 180) * planetDetails.angle;
   if (planetDetails.parent != "sun") {
     parent = PLANETS[planetDetails.parent].empty;
@@ -683,6 +707,36 @@ function GeneratePlanet(planet) {
   planetDetails.empty = empty;
   planetDetails.pivot = pivot;
   planetDetails.mesh = planetMesh;
+}
+function GenerateRings(rings) {
+  let ringsDetails = rings;
+  let cache = ringsDetails.textureCache;
+  let ringsMat = new THREE.MeshStandardMaterial({
+    map: cache.albedo,
+    alphaMap: cache.alphaMap,
+    transparent: true,
+    metalness: 0.0,
+    roughness: 0.2,
+  });
+  
+
+  
+  let ringsGeo = new THREE.CircleGeometry(
+    ringsDetails.size,
+    ringsDetails.detail
+  );
+  let ringsMesh = new THREE.Mesh(ringsGeo, ringsMat);
+  ringsMesh.castShadow = false;
+  ringsMesh.receiveShadow = true;
+  // pivot.rotation.z = (Math.PI / 180) * ringsDetails.angle;
+    parent = PLANETS[ringsDetails.parent].empty;
+
+  
+    ringsMesh.rotation.set( -Math.PI/2, 0, 0);
+
+  parent.add(ringsMesh);
+ 
+  ringsDetails.mesh = ringsMesh;
 }
 
 function createRing(innerW, width, z) {
