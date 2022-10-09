@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import * as dat from "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.module.js";
+import { BackSide } from "three";
 // import { loaded } from "./../stores/var.js";
 
 let camera,
@@ -21,29 +22,27 @@ let
       0: new THREE.Vector3(299, 30, 771),
       1: new THREE.Vector3(299, -4.72, 771),
       2: new THREE.Vector3(210, 232.55, -508.24),
-      3: new THREE.Vector3(311.49, 219, -621.35),
-      4: new THREE.Vector3(311.49, 218.01, -621.35),
+      3: new THREE.Vector3(210, 193, -508.24),
     },
     rotation: {
       0: new THREE.Vector3(0.1,0,0),
       1: new THREE.Vector3(0,0,0),
       2: new THREE.Vector3(0,0,0),
-      3: new THREE.Vector3(0,.78,0), 
-      4: new THREE.Vector3(0,.78,0), 
+      2: new THREE.Vector3(0,0,0),
     },
   },
   SUN= {
     mesh: undefined,
     pivot: undefined,
     orbitDistance: 150000,
-    period: [3.61,1.4, -1.38, -.82, -2.48],
+    period: [3.61,1.4, -1.38, -1.38],
     tilt: 0.2,
   };
 
   let RINGS = {
     mesh: undefined,
     texture: {
-      albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9e498f0f60f2743dd75_albedo.jpg",
+      albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6343257376d014654f1d4835_albedo.jpg",
     alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9e4da79c9192eadb5ce_alpha.jpg"
     },
     cache: {
@@ -67,11 +66,10 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f1f9c637c2dccff815_albedo.jpg",
-        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0881d9e078b84d8ed_roughness.jpg",
-        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f18e67ca2d7f0b83d5_normal.jpg",
-        metalness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0e5d16b2038d6cf55_metalness.jpg",
-        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/633f99f0d278a13ae7404f15_ambientocclusion.jpg",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6343255b86548a459069a6cf_albedo.jpg",
+        roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6343255b025b9f0485593c65_roughness.jpg",
+        normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6343255b317ef9e218d8196d_normal.jpg",
+        ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6343255bc2d4ac1ef8534279_ao.jpg",
       },
       rotationSpeed: 1,
       cache: {
@@ -84,7 +82,7 @@ let
       size: 140,
       detail: 25,
       orbitDistance: 0,
-      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI],
+      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI],
       tilt: 0 * Math.PI,
     },
     moon: {
@@ -92,8 +90,9 @@ let
       mesh: undefined,
       pivot: undefined,
       empty: undefined,
+      type:'baked',
       texture: {
-        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9be98f0f6390843daeb_albedo.jpg",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/634325e476d014a9f61d4e47_albedo-baked.jpg",
         roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9bde3265c1934319f6b_roughness.jpg",
         normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9be3b96bc14b560acad_normal.jpg",
         ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9bee3265ca86c319f6c_ao.jpg",
@@ -107,9 +106,9 @@ let
       },
       parent: "main",
       size: 22,
-      detail: 20,
+      detail: 60,
       orbitDistance: 710,
-      period: [2.37, 2.37, 2.78, 2.78,2.78],
+      period: [2.37, 2.37, 2.78, 2.78],
       tilt: 0.35,
     },
     earth: {
@@ -134,7 +133,7 @@ let
       size: 0.5,
       detail: 20,
       orbitDistance:60,
-      period: [-2.6,-2.6,1.63,-1.24,-1.24],
+      period: [-2.6,-2.6,1.63,1.63],
       tilt: 0.42,
     },
     mainClouds: {
@@ -143,8 +142,8 @@ let
       pivot: undefined,
       empty: undefined,
       texture: {
-        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
-        alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/63335754d48b534cf87e23f3_clouds.png",
+        albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6343255b407836519df4b9fc_clouds.jpg",
+        alphaMap: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6343255b407836519df4b9fc_clouds.jpg",
       },
       rotationSpeed: 3.4,
       cache: {
@@ -155,7 +154,7 @@ let
       size: 142,
       detail: 25,
       orbitDistance: 0,
-      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI0 * Math.PI,0 * Math.PI,],
+      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI0 * Math.PI],
       tilt: 0 * Math.PI,
     },
     moonClouds: {
@@ -176,7 +175,7 @@ let
       size: 22.1,
       detail: 40,
       orbitDistance: 0,
-      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI],
+      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI],
       tilt: 0 * Math.PI,
     },
     earthClouds: {
@@ -197,7 +196,7 @@ let
       size: 0.51,
       detail: 20,
       orbitDistance: 0,
-      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI],
+      period: [0 * Math.PI,0 * Math.PI,0 * Math.PI,0 * Math.PI],
       tilt: 0 * Math.PI,
     },
   };
@@ -217,12 +216,7 @@ let
   //   normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9be3b96bc14b560acad_normal.jpg",
   //   ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9bee3265ca86c319f6c_ao.jpg",
   // };
-  // PLANETS.earth.texture = {
-  //   albedo: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a698f0f6314c43da43_albedo.jpg",
-  //   roughness: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a62c7f35550916747a_roughness.jpg",
-  //   normal: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a7e3265c79f6319f47_normal.jpg",
-  //   ao: "https://uploads-ssl.webflow.com/632cafc077ea14b61822a9e6/6340f9a73b96bc12ed60aba0_ao.jpg",
-  // };
+  
   // PLANETS.mainClouds.texture = {
   //   albedo: "img/Planets/clouds.jpg",
   //   alphaMap: "img/Planets/clouds.jpg"
@@ -350,9 +344,8 @@ function SetupGUI() {
     .name("Orbit Period")
     .onChange((value) => {
       SUN.pivot.rotation.y = value;
+      RINGS.mesh.rotation.z  = value -(Math.PI/2);
     });
-    console.log('SUN.pivot');
-    console.log(SUN.pivot);
     guiSun
     .add(SUN.pivot.rotation, "x", -1 * Math.PI, 1 * Math.PI, 0.01)
     .name("Orbit Tilt")
@@ -467,9 +460,9 @@ function render() {
   let delta = clock.getDelta();
   var time = clock.elapsedTime;
 
-  Object.keys(PLANETS).forEach(key => {
-      PLANETS[key].mesh.rotation.y += ((delta * PLANETS[key].rotationSpeed * Math.PI) / 180);
-  });
+  // Object.keys(PLANETS).forEach(key => {
+  //     PLANETS[key].mesh.rotation.y += ((delta * PLANETS[key].rotationSpeed * Math.PI) / 180);
+  // });
 
   uniforms.iResolution.value.set(canvas.width, canvas.height);
   uniforms.iTime.value = time;
@@ -542,10 +535,10 @@ function loadTextures() {
   let texturePromise = new Promise(function (resolve, reject) {
     GetTextures(MAIN);
     GetTextures(MOON);
-    GetTextures(EARTH);
+    // GetTextures(EARTH);
     GetTextures(MAINCLOUDS);
-    GetTextures(MOONCLOUDS);
-    GetTextures(EARTHCLOUDS);
+    // GetTextures(MOONCLOUDS);
+    // GetTextures(EARTHCLOUDS);
     GetTextures(RINGS);
 
     function GetTextures(planet) {
@@ -588,16 +581,16 @@ function generateSpace() {
   GenerateAmbient();
   GeneratePlanet("main");
   GeneratePlanet("moon");
-  GeneratePlanet("earth");
+  // GeneratePlanet("earth");
   GeneratePlanet("mainClouds");
-  GeneratePlanet("moonClouds");
-  GeneratePlanet("earthClouds");
+  // GeneratePlanet("moonClouds");
+  // GeneratePlanet("earthClouds");
   GenerateRings(RINGS);
   renderer.render(scene, camera);
   requestAnimationFrame(render);
   window.addEventListener("scroll", onScroll);
   window.addEventListener("resize", onWindowResize, false);
-  SetupGUI();
+  // SetupGUI();
 }
 function GenerateAmbient()
 {
@@ -671,9 +664,14 @@ function GeneratePlanet(planet) {
     planetDetails.detail,
     planetDetails.detail
   );
+
+  if(planetDetails.type == 'baked')
+  planetMat.normalMap = null;
+
   let planetMesh = new THREE.Mesh(planetGeo, planetMat);
   
-
+  planetMesh.castShadow = true;
+  planetMesh.receiveShadow = true;
   if (planet != 'mainClouds' || planet != 'moonClouds' || planet != 'earthClouds')
   {
     planetMesh.castShadow = true;
@@ -711,7 +709,7 @@ function GeneratePlanet(planet) {
 function GenerateRings(rings) {
   let ringsDetails = rings;
   let cache = ringsDetails.textureCache;
-  let ringsMat = new THREE.MeshStandardMaterial({
+  let ringsMat = new THREE.MeshBasicMaterial({
     map: cache.albedo,
     alphaMap: cache.alphaMap,
     transparent: true,
@@ -732,8 +730,9 @@ function GenerateRings(rings) {
     parent = PLANETS[ringsDetails.parent].empty;
 
   
-    ringsMesh.rotation.set( -Math.PI/2, 0, 0);
-
+    ringsMesh.rotation.set( -Math.PI/2, 0, -Math.PI/2);
+    ringsMesh.castShadow = true;
+    ringsMesh.receiveShadow = true;
   parent.add(ringsMesh);
  
   ringsDetails.mesh = ringsMesh;
@@ -764,60 +763,6 @@ function onScroll() {
 
 
 
-function OldScroll() {
-  var h = document.documentElement, b = document.body, st = "scrollTop", sh = "scrollHeight";
-  var y = ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100; //0 to 100
-
-
-
-  // console.log('camera change:' + (y - ratio) / 1000);
-  if (y < ratio / 2) {
-    let v = y * 0.02 * (100 / ratio);
-
-    LerpCamera(0, v);
-
-    LerpPivot(MAIN, 0, v);
-    LerpPivot(EARTH, 0, v);
-    LerpPivot(MOON, 0, v);
-
-    LerpPositionSun(0, v);
-  } else if (y < ratio * 1.0) {
-    let v = y * 0.02 * (100 / ratio) - 1;
-    LerpCamera(1, v);
-
-    LerpPivot(MAIN, 1, v);
-    LerpPivot(EARTH, 1, v);
-    LerpPivot(MOON, 1, v);
-
-    LerpPositionSun(1, v);
-
-    // planets[0].obj.position.y = end.sun.y;
-    // planets[0].obj.position.z = end.sun.z;
-  } else if (y >= ratio * 1 && y <= ratio * 1.5) {
-    let v = y * 0.02 * (100 / ratio) - 1;
-    LerpCamera(2, v);
-
-    LerpPivot(MAIN, 2, v);
-    LerpPivot(EARTH, 2, v);
-    LerpPivot(MOON, 2, v);
-
-    LerpPositionSun(2, v);
-  } else if (y >= ratio * 1.5) {
-    camera.position.x = CAMERA.position[2].x;
-    camera.position.y = CAMERA.position[2].y;
-    camera.position.z = CAMERA.position[2].z;
-    // camera.position.z = end.camera.z - (y - ratio) * 12.7;
-    // MAIN.pivot.rotation.y = MAIN.pivotRotation[2];
-    // MOON.pivot.rotation.y = MOON.pivotRotation[2];
-    // EARTH.pivot.rotation.y = EARTH.pivotRotation[2];
-    // SUN.mesh.position.x = SUN.position[2].x;
-    // SUN.mesh.position.y = SUN.position[2].y;
-    // SUN.mesh.position.z = SUN.position[2].z;
-  }
-
-  
-}
-
 function GetContainerInfo(div,offset,cart) {
   topPixel = $(div).offset().top - $(offset).height();
   bottomPixel = $(div).position().top +
@@ -834,7 +779,7 @@ function ScrollThrough()
       percent = GetPercent(scrollPosition, topPixel, bottomPixel);
       percent = clamp(percent, 0, 100);
       console.log("Scrolled: " + percent+"%");
-      let sections = PLANETS.main.period.length-1;
+      let sections = 3;
       if(percent<(100/sections))
       {
         let p = percent*sections;
@@ -849,7 +794,7 @@ function ScrollThrough()
         let v=p/100;
         LerpAll(1,v);
 
-      }else if(percent<(100/sections)*3)
+      }else if(percent<=100)
       {
         let p = (percent-(100/sections)*2)*sections;
         console.log('Section 3: '+p);
@@ -868,7 +813,7 @@ function ScrollThrough()
     LerpCameraPosition(x, v);
     LerpCameraRotation(x, v);
     LerpPivot(MAIN, x, v);
-    LerpPivot(EARTH, x, v);
+    // LerpPivot(EARTH, x, v);
     LerpPivot(MOON, x, v);
     LerpPositionSun(x, v);
   }
@@ -927,6 +872,8 @@ function ScrollThrough()
           lerp(SUN.period[i], SUN.period[i + 1], v),
           0
         );
+        RINGS.mesh.rotation.z  = lerp(SUN.period[i]-(Math.PI/2), SUN.period[i + 1]-(Math.PI/2), v)
+        
       }
 }
 function GetScrollTop() {
