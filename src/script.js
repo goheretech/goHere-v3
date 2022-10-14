@@ -278,13 +278,24 @@ let CAMERA = {
       0: new THREE.Vector3(299, 30, 771),
       1: new THREE.Vector3(299, -4.72, 771),
       2: new THREE.Vector3(299, 232.39, -508.24),
-      3: new THREE.Vector3(210, 193, -508.24),
+      3: new THREE.Vector3(299, 193, -508.24),
+    },
+    positionMobile:{
+      0: new THREE.Vector3(-170, 30, 854),
+      1: new THREE.Vector3(-170, -4.72, 854),
+      2: new THREE.Vector3(367, 232.39, -508.24),
+      3: new THREE.Vector3(367, 193, -508.24),
     },
     rotation: {
       0: new THREE.Vector3(0.1, 0, 0),
       1: new THREE.Vector3(0, 0, 0),
       2: new THREE.Vector3(0, 0.63, 0),
-      3: new THREE.Vector3(0, 0, 0),
+      3: new THREE.Vector3(0, 0.63, 0),
+    }, rotationMobile: {
+      0: new THREE.Vector3(0.1, -0.35, 0),
+      1: new THREE.Vector3(0, -0.35, 0),
+      2: new THREE.Vector3(0.1, 0.88, 0),
+      3: new THREE.Vector3(0.1, 0.88, 0),
     },
   },
   SUN = {
@@ -741,11 +752,32 @@ function init() {
       0.1,
       3000
     );
+    if(camera.aspect>1)
+    {
     camera.position.set(
       CAMERA.position[0].x,
       CAMERA.position[0].y,
       CAMERA.position[0].z
-    );
+    )
+    camera.rotation.set(
+      CAMERA.rotation[0].x,
+      CAMERA.rotation[0].y,
+      CAMERA.rotation[0].z
+    )
+  }
+    else{
+      camera.position.set(
+        CAMERA.positionMobile[0].x,
+        CAMERA.positionMobile[0].y,
+        CAMERA.positionMobile[0].z
+      )
+      camera.rotation.set(
+        CAMERA.rotationMobile[0].x,
+        CAMERA.rotationMobile[0].y,
+        CAMERA.rotationMobile[0].z
+      )
+    }
+    
     scene.add(camera);
   }
 }
@@ -883,7 +915,7 @@ function generateSpace() {
   requestAnimationFrame(render);
   window.addEventListener("scroll", onScroll);
   window.addEventListener("resize", onWindowResize, false);
-  // SetupGUI();
+  SetupGUI();
 }
 function GenerateAmbient() {
   ambientLight = new THREE.AmbientLight(0xffffff, 0.15);
@@ -1107,15 +1139,30 @@ function ScrollThrough() {
   }
 
   function LerpCameraPosition(i, v) {
-    camera.position.x = lerp(CAMERA.position[i].x, CAMERA.position[i + 1].x, v);
-    camera.position.y = lerp(CAMERA.position[i].y, CAMERA.position[i + 1].y, v);
-    camera.position.z = lerp(CAMERA.position[i].z, CAMERA.position[i + 1].z, v);
+    if(camera.aspect>1)
+    {
+
+      camera.position.x = lerp(CAMERA.position[i].x, CAMERA.position[i + 1].x, v);
+      camera.position.y = lerp(CAMERA.position[i].y, CAMERA.position[i + 1].y, v);
+      camera.position.z = lerp(CAMERA.position[i].z, CAMERA.position[i + 1].z, v);
+    }else{
+      camera.position.x = lerp(CAMERA.positionMobile[i].x, CAMERA.positionMobile[i + 1].x, v);
+      camera.position.y = lerp(CAMERA.positionMobile[i].y, CAMERA.positionMobile[i + 1].y, v);
+      camera.position.z = lerp(CAMERA.positionMobile[i].z, CAMERA.positionMobile[i + 1].z, v);
+    }
   }
 
   function LerpCameraRotation(i, v) {
-    camera.rotation.x = lerp(CAMERA.rotation[i].x, CAMERA.rotation[i + 1].x, v);
-    camera.rotation.y = lerp(CAMERA.rotation[i].y, CAMERA.rotation[i + 1].y, v);
-    camera.rotation.z = lerp(CAMERA.rotation[i].z, CAMERA.rotation[i + 1].z, v);
+    if(camera.aspect>1)
+    {
+      camera.rotation.x = lerp(CAMERA.rotation[i].x, CAMERA.rotation[i + 1].x, v);
+      camera.rotation.y = lerp(CAMERA.rotation[i].y, CAMERA.rotation[i + 1].y, v);
+      camera.rotation.z = lerp(CAMERA.rotation[i].z, CAMERA.rotation[i + 1].z, v);
+    }else{
+      camera.rotation.x = lerp(CAMERA.rotationMobile[i].x, CAMERA.rotationMobile[i + 1].x, v);
+      camera.rotation.y = lerp(CAMERA.rotationMobile[i].y, CAMERA.rotationMobile[i + 1].y, v);
+      camera.rotation.z = lerp(CAMERA.rotationMobile[i].z, CAMERA.rotationMobile[i + 1].z, v);
+    }
   }
 
   function LerpPivot(pName, i, v) {
