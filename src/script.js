@@ -915,7 +915,7 @@ function generateSpace() {
   requestAnimationFrame(render);
   window.addEventListener("scroll", onScroll);
   window.addEventListener("resize", onWindowResize, false);
-  SetupGUI();
+  // SetupGUI();
 }
 function GenerateAmbient() {
   ambientLight = new THREE.AmbientLight(0xffffff, 0.15);
