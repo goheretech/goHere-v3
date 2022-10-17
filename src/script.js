@@ -1082,9 +1082,9 @@ function createRing(innerW, width, z) {
   return ring;
 }
 function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.aspect = document.documentElement.clientWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(document.documentElement.clientWidth, window.innerHeight);
 }
 function onScroll() {
   //Get percent scrolled
