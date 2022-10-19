@@ -655,7 +655,6 @@ function SetupGUI() {
     });
 
   let guiMoon = gui.addFolder("Moon");
-  console.log(MOON.mesh.geometry);
   guiMoon
   .add(MOON.mesh.rotation, "y", -6, 6, 0.01)
   .name("Planet Rotation")
@@ -853,8 +852,6 @@ function loadTextures() {
     var loader = document.getElementById("loadbar_internal");
     const progress = itemsLoaded / itemsTotal;
     loader.style.width = progress * 100 + "%";
-    console.log(`Last loaded item: ${urlOfLastItemLoaded}`);
-    console.log(`Progess: ${progress * 100}%`);
     if (progress == 1) {
       loader.parentElement.parentElement.style.display = "none";
       generateSpace();
@@ -882,7 +879,6 @@ function loadTextures() {
         planet.textureCache.alphaMap = textureLoader.load(
           path + planet.texture.alphaMap
         );
-        console.log("Adding alpha map to " + planet.name);
       }
     }
 
@@ -895,7 +891,6 @@ function loadTextures() {
 
   texturePromise.then(
     function (value) {
-      console.log(`It's done: ${MAIN.textureCache.ao}`);
       // generateSpace();
     },
     function (error) {
@@ -944,7 +939,6 @@ function GenerateSun() {
   // sun.shadow.
 
   // sun.position.set(SUN.position[0].x, SUN.position[0].y, SUN.position[0].z);
-  console.log(`Sun Orbit Distance ${SUN.orbitDistance}`);
   sun.position.set(0, 0, SUN.orbitDistance);
   pivot.rotation.set(SUN.tilt, SUN.period[0], 0);
 
@@ -1019,7 +1013,6 @@ function GeneratePlanet(planet) {
   pivot.add(empty);
   planetMesh.position.set(0, 0, planetDetails.orbitDistance);
   pivot.rotation.set(planetDetails.tilt, planetDetails.period[0], 0);
-  console.log(planet);
   empty.position.set(0, 0, planetDetails.orbitDistance);
   // if (pName == "moon") {
   //   var rings = [
@@ -1108,26 +1101,21 @@ function ScrollThrough() {
   scrollPosition = GetScrollTop();
   percent = GetPercent(scrollPosition, topPixel, bottomPixel);
   percent = clamp(percent, 0, 100);
-  console.log("Scrolled: " + percent + "%");
   let sections = 3;
   if (percent < 100 / sections) {
     let p = percent * sections;
-    console.log("Section 1: " + p);
     let v = p / 100;
     LerpAll(0, v);
   } else if (percent < (100 / sections) * 2) {
     let p = (percent - 100 / sections) * sections;
-    console.log("Section 2: " + p);
     let v = p / 100;
     LerpAll(1, v);
   } else if (percent <= 100) {
     let p = (percent - (100 / sections) * 2) * sections;
-    console.log("Section 3: " + p);
     let v = p / 100;
     LerpAll(2, v);
   } else if (percent <= 100) {
     let p = (percent - (100 / sections) * 3) * sections;
-    console.log("Section 4: " + p);
     let v = p / 100;
     LerpAll(3, v);
   }
