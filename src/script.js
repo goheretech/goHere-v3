@@ -283,8 +283,8 @@ let CAMERA = {
     positionMobile:{
       0: new THREE.Vector3(-170, 30, 854),
       1: new THREE.Vector3(-170, -4.72, 854),
-      2: new THREE.Vector3(367, 232.39, -508.24),
-      3: new THREE.Vector3(367, 193, -508.24),
+      2: new THREE.Vector3(221, 232.39, -508.24),
+      3: new THREE.Vector3(221, 193, -508.24),
     },
     rotation: {
       0: new THREE.Vector3(0.1, 0, 0),
@@ -294,8 +294,8 @@ let CAMERA = {
     }, rotationMobile: {
       0: new THREE.Vector3(0.1, -0.35, 0),
       1: new THREE.Vector3(0, -0.35, 0),
-      2: new THREE.Vector3(0.1, 0.88, 0),
-      3: new THREE.Vector3(0.1, 0.88, 0),
+      2: new THREE.Vector3(0.1, -0.15, 0),
+      3: new THREE.Vector3(0.1, -0.15, 0),
     },
   },
   SUN = {
@@ -789,6 +789,9 @@ function render() {
   // Object.keys(PLANETS).forEach(key => {
   //     PLANETS[key].mesh.rotation.y += ((delta * PLANETS[key].rotationSpeed * Math.PI) / 180);
   // });
+
+        PLANETS['mainClouds'].mesh.rotation.y += ((delta * PLANETS['mainClouds'].rotationSpeed * Math.PI) / 180);
+        PLANETS['moonClouds'].mesh.rotation.y += ((delta * PLANETS['moonClouds'].rotationSpeed * Math.PI) / 180);
 
   uniforms.iResolution.value.set(canvas.width, canvas.height);
   uniforms.iTime.value = time;
