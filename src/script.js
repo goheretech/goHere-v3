@@ -1102,7 +1102,6 @@ function clamp(num, min, max) {
 function ScrollThrough() {
   scrollPosition = GetScrollTop();
   percent = GetPercent(scrollPosition, topPixel, bottomPixel);
-  console.log("Percent:"+percent+"%");
   percent = clamp(percent, 0, 100);
   let sections = 3;
   if (percent < 100 / sections) {

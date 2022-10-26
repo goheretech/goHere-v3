@@ -1,11 +1,4 @@
 <script
-  type="module"
-  src="https://cdn.jsdelivr.net/gh/goheretech/goHere-v3@
-ef9c4bf186b347419b1466c683df2e018005082a
-/src/script.js"
-></script>
-
-<script
   async
   src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"
 ></script>
@@ -32,14 +25,17 @@ ef9c4bf186b347419b1466c683df2e018005082a
 <script
   type="module"
   src="https://cdn.jsdelivr.net/gh/goheretech/goHere-v3@
-  e4ddb09479ac3204e441687e14e7ed8357e121c8
+efbce59bcdb10d8476b3f8d07527d99fefd76ce9
 /src/script.js"
 ></script>
 
+c
 <script>
+
+  
   ///Scroll Animations
 
-  let fps = 80;
+  let fps = 100;
 
   const getMobileOS = () => {
     const ua = navigator.userAgent;
@@ -67,6 +63,7 @@ ef9c4bf186b347419b1466c683df2e018005082a
   } else {
     introSlider.frames = 60;
   }
+  
 
   let hololensSlider = {
     path: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fhololens%2F",
@@ -170,13 +167,12 @@ ef9c4bf186b347419b1466c683df2e018005082a
   }
 
   ///Color Animation
-
+  let i=0;
   const numSteps = 90.0;
   let prevRatio = 0;
   let goingUp;
   const options = {
     threshold: buildThresholdList(),
-    rootMargin: "-5px",
   };
 
   const thresh = [
@@ -187,7 +183,8 @@ ef9c4bf186b347419b1466c683df2e018005082a
   function buildThresholdList() {
     let thresholds = [];
 
-    for (let i = 1.0; i <= numSteps; i++) {
+    for (let i = 1.0; i <= numSteps; i++) 
+    {
       let ratio = i / numSteps;
       thresholds.push(ratio);
     }
@@ -196,7 +193,8 @@ ef9c4bf186b347419b1466c683df2e018005082a
     return thresholds;
   }
 
-  function GetPercent(ratio, start, end) {
+  function GetPercent(ratio, start, end)
+  {
     var slope = (0 - 100) / (end - start);
     var intercept = slope * -1 * start + 100;
     var mx = slope * ratio;
@@ -205,6 +203,7 @@ ef9c4bf186b347419b1466c683df2e018005082a
     return percent;
   }
 
+  
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -233,17 +232,21 @@ ef9c4bf186b347419b1466c683df2e018005082a
           }
         }
       }
+      console.log("Section "+i);
+      i++;
       return;
     });
   }, options);
 
-  observer.observe(document.querySelector(".outline-wrapper"));
-  observer.observe(document.querySelector(".outline-wrapper-2"));
-  observer.observe(document.querySelector(".outline-wrapper-3"));
-  observer.observe(document.querySelector(".outline-wrapper-4"));
-  observer.observe(document.querySelector(".outline-wrapper-5"));
+
+  for (let y = 0; y < document.getElementsByClassName("outline-wrapper").length; y++) {
+    const element = document.getElementsByClassName("outline-wrapper")[y];
+    observer.observe(elem);
+  }
+  
 
   ///Reset Style for Production
 
   $(".removeclass").removeClass("removeclass");
+  
 </script>
