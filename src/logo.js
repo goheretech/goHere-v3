@@ -64,6 +64,7 @@ function LogoMaterial(clr)
 Start();
 
 function Start() {
+  console.log("it's start!")
   SetupEnvMap();
   SetupIridescentMaterial();
   SetupRenderer();
