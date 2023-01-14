@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rail{
+            height:400vh;
+            position:relative;
+        }
+        .cart{
+            height:100vh;
+            position:sticky;
+            top:0px;
+            width:100vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="rail">
+        <video id="myVideo" class="cart" src="../static/logo.mp4" muted></video>
+    </div>
+</body>
+</html>
+
+
+
+<script>
+// JavaScript code to listen for the scroll event and play the video when a certain percentage of the page has been scrolled
+window.addEventListener('scroll', function() {
+  // Calculate the percentage of the page that has been scrolled
+  var scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  
+  // If the scroll percentage is greater than or equal to 50, play the video
+  if (scrollPercent >= 1 && scrollPercent <= 2) {
+    document.getElementById('myVideo').play();
+  }
+});
+</script>

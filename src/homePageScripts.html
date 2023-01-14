@@ -24,15 +24,12 @@
 
 <script
   type="module"
-  src="https://cdn.jsdelivr.net/gh/goheretech/goHere-v3@
-efbce59bcdb10d8476b3f8d07527d99fefd76ce9
-/src/script.js"
+  src="https://cdn.jsdelivr.net/gh/goheretech/goHere-v3@99bfe95b3fd780c16bad5b83f672c4ecee233296/src/script.js"
 ></script>
 
-c
+
 <script>
 
-  
   ///Scroll Animations
 
   let fps = 100;
@@ -56,14 +53,14 @@ c
     imgName: "colorSwirl",
     lastSlide: 0,
     currentSlide: 0,
+    imgs: null
   };
 
   if (getMobileOS() == "iOS") {
     introSlider.frames = 20;
   } else {
-    introSlider.frames = 60;
+    introSlider.frames = 55;
   }
-  
 
   let hololensSlider = {
     path: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fhololens%2F",
@@ -74,20 +71,21 @@ c
     imgName: "a02",
     lastSlide: 0,
     currentSlide: 0,
+    imgs: null
   };
 
   window.addEventListener("load", (event) => {
-    addImages(hololensSlider);
+    // addImages(hololensSlider);
     addImages(introSlider);
     window.addEventListener("scroll", function () {
       setupScroll(introSlider);
-      setupScroll(hololensSlider);
+      // setupScroll(hololensSlider);
     });
 
     let time = 1000 / fps;
     setInterval(() => {
       updateSlider(introSlider);
-      updateSlider(hololensSlider);
+      // updateSlider(hololensSlider);
 
       function updateSlider(root) {
         if (root.currentSlide == root.lastSlide) return;
@@ -100,11 +98,12 @@ c
         }
       }
     }, time);
+
     function changeSlide(slide, root) {
-      const imgs = document.getElementsByClassName(root.class);
+      const imgs = root.imgs;
       for (let i = 0; i < imgs.length; i++) {
         const current = imgs[i];
-        if (i < slide && i > slide - 2) {
+        if (i <= slide && i > slide - 3) {
           current.style.display = "flex";
         } else {
           current.style.display = "none";
@@ -113,14 +112,16 @@ c
     }
     function setupScroll(root) {
       const y = window.scrollY;
-      const imgs = document.getElementsByClassName(root.class);
+      const imgs = root.imgs;
       frame = imageSlider(y, root.rail, imgs);
+      
       root.currentSlide = frame;
     }
   });
 
   function addImages(root) {
     let img = [];
+    
     for (let i = 0; i < root.frames; i++) {
       if (i <= 9) {
         img.push(root.path + root.imgName + "0" + i + ".webp?alt=media");
@@ -128,25 +129,83 @@ c
         img.push(root.path + root.imgName + i + ".webp?alt=media");
       }
       if (i + 1 == root.frames) {
+        
         addImagesDiv(img, root);
       }
     }
+
+    
+  }
+
+  function SetCover(root)
+  {
+    root.imgs.forEach((img, i)=>
+    {
+      console.log('index:',i);
+      if(i==0)
+      {
+        img.style.display = "flex";
+      }else{
+        img.style.display = "hide";
+      }
+    });
   }
 
   function addImagesDiv(images, root) {
+    let divs = [];
     images.forEach((element, i) => {
       let div = document.createElement("div");
       div.style.backgroundImage = "url(" + element + ")";
       div.style.zIndex = i;
+      if(i==0)
+      {
+        div.style.display = "flex";
+      }else{
+        // div.style.display = "hide";
+        // console.log("Hiding image: "+element);
+      }
       div.classList.add(root.class);
       preload(element);
-
+      // root.imgs.appendChild(element);
+      divs.push(div);
       root.parent.appendChild(div);
     });
+
+    root.imgs = divs;
+
+     //Preload
+     Promise.all(Array.from(document.images).map(img => {
+    if (img.complete)
+        if (img.naturalHeight !== 0)
+            return Promise.resolve();
+        else
+            return Promise.reject(img);
+    return new Promise((resolve, reject) => {
+        img.addEventListener('load', resolve);
+        img.addEventListener('error', () => reject(img));
+    });
+})).then(() => {
+    HideLoadScreen();
+    root.imgs.forEach((element, i) => {
+      // element.style.display = 'none';
+    });
+    root.imgs[0].style.display = 'flex';
+}, badImg => {
+});
   }
+
+
   function preload(url) {
     var img = new Image();
     img.src = url;
+    
+  }
+
+  function HideLoadScreen()
+  {
+    // $('#loadscreen').hide();
+    SetCover(introSlider);
+    // SetCover(hololensSlider);
   }
 
   function imageSlider(pixel, elem, slides) {
@@ -166,35 +225,164 @@ c
     }
   }
 
-  ///Color Animation
-  let i=0;
-  const numSteps = 90.0;
-  let prevRatio = 0;
-  let goingUp;
-  const options = {
-    threshold: buildThresholdList(),
+
+  let colorChange1 = {
+    id: "#colorchange1",
+    percent: 0,
+    topPixel: 0,
+    bottomPixel: 0,
+    outline: "out-1",
+  };
+  let colorChange2 = {
+    id: "#colorchange2",
+    percent: 0,
+    topPixel: 0,
+    bottomPixel: 0,
+    outline: "out-2",
+    outline_glow:"out-2a"
   };
 
-  const thresh = [
-    [0.5, 0.75],
-    [0.8, 0.4],
-  ];
+  let colorChange3 = {
+    id: "#colorchange3",
+    percent: 0,
+    topPixel: 0,
+    bottomPixel: 0,
+    outline: "out-3",
+    outline2: "out2-3",
+  };
 
-  function buildThresholdList() {
-    let thresholds = [];
+  let colorChange4 = {
+    id: "#colorchange4",
+    percent: 0,
+    topPixel: 0,
+    bottomPixel: 0,
+    outline: "out-4",
+    outline2: "out2-4",
+  };
 
-    for (let i = 1.0; i <= numSteps; i++) 
-    {
-      let ratio = i / numSteps;
-      thresholds.push(ratio);
+  let colorChange5 = {
+    id: "#colorchange5",
+    percent: 0,
+    topPixel: 0,
+    bottomPixel: 0,
+    outline: "out-5",
+    outline2: "out2-5",
+  };
+
+  let colorChange6 = {
+    id: "#colorchange6",
+    percent: 0,
+    topPixel: 0,
+    bottomPixel: 0,
+    outline: "out-6",
+  };
+  let colorChange7 = {
+    id: "#colorchange7",
+    percent: 0,
+    topPixel: 0,
+    bottomPixel: 0,
+    outline: "out-7",
+  };
+  let colorChange8 = {
+    id: "#colorchange8",
+    percent: 0,
+    topPixel: 0,
+    bottomPixel: 0,
+    outline: "out-8",
+    outline2: "out2-8",
+  };
+  let colorChange9 = {
+    id: "#colorchange9",
+    percent: 0,
+    topPixel: 0,
+    bottomPixel: 0,
+    outline: "out-9",
+  };
+  let colorChange10 = {
+    id: "#colorchange10",
+    percent: 0,
+    topPixel: 0,
+    bottomPixel: 0,
+    outline: "out-10",
+  };
+  let scrollPosition;
+
+  ScrollAnimation(colorChange1);
+  ScrollAnimation(colorChange2);
+  ScrollAnimation(colorChange3);
+  ScrollAnimation(colorChange4);
+  ScrollAnimation(colorChange5);
+  ScrollAnimation(colorChange6);
+  ScrollAnimation(colorChange7);
+  ScrollAnimation(colorChange8);
+  ScrollAnimation(colorChange9);
+  ScrollAnimation(colorChange10);
+
+  function ScrollAnimation(element) {
+    GetContainerInfo(element.id);
+
+    window.addEventListener("scroll", ScrollThrough);
+
+    function ScrollThrough() {
+      scrollPosition = GetScrollTop();
+      element.percent = GetPercent(
+        scrollPosition,
+        element.topPixel,
+        element.bottomPixel
+      );
+      element.percent = clamp(element.percent, 0, 100);
+
+      UpdateStyle();
     }
 
-    thresholds.push(0);
-    return thresholds;
+    function UpdateStyle() {
+      if (element.outline2) {
+        let p = GetPercentage(element.percent, 0, 40);
+        p = clamp(p, 0, 100);
+        outline = document.getElementById(element.outline);
+        outline.style.backgroundPosition = p + "% 100%";
+
+        let p2 = GetPercentage(element.percent, 50, 70);
+        p2 = clamp(p2, 0, 100);
+        outline2 = document.getElementById(element.outline2);
+        {
+          outline2.style.backgroundPosition = p2 + "% 100%";
+        }
+      } else {
+        let p = GetPercentage(element.percent, 0, 70);
+        p = clamp(p, 0, 100);
+        outline = document.getElementById(element.outline);
+        outlineGlow = document.getElementById(element.outline_glow);
+        if(!outline) {return};
+        outline.style.backgroundPosition = p + "% 100%";
+        if(!outlineGlow) {return};
+        outlineGlow.style.backgroundPosition = p + "% 100%";
+      }
+    }
+
+    function GetContainerInfo(div) {
+      element.topPixel = $(div).offset().top;
+      element.bottomPixel = $(div).position().top + $(div).outerHeight(true);
+    }
   }
 
-  function GetPercent(ratio, start, end)
-  {
+  function GetScrollTop() {
+    return (
+      window.pageYOffset ||
+      (document.documentElement || document.body.parentNode || document.body)
+        .scrollTop
+    );
+  }
+
+  function clamp(num, min, max) {
+    return Math.min(Math.max(num, min), max);
+  }
+
+  function GetPercent(sp, t, b) {
+    return (100 * (sp - t)) / (b - t);
+  }
+
+  function GetPercentage(ratio, start, end) {
     var slope = (0 - 100) / (end - start);
     var intercept = slope * -1 * start + 100;
     var mx = slope * ratio;
@@ -202,51 +390,10 @@ c
     percent = Math.min(Math.max(percent, -100), 100);
     return percent;
   }
-
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const square = entry.target.querySelector(".outline");
-        const square2 = entry.target.querySelector(".outline-2");
-        var percent = GetPercent(
-          entry.intersectionRatio,
-          thresh[0][0],
-          thresh[0][1]
-        );
-
-        if (percent < 0) {
-          if (square2) {
-            square2.style.backgroundPosition = 100 + percent + "% 100%";
-          }
-        } else {
-          square.style.backgroundPosition = percent + "% 100%";
-        }
-
-        if (entry.boundingClientRect.top < 0) {
-          if (square) {
-            square.style.backgroundPosition = "0% 100%";
-          }
-          if (square2) {
-            square2.style.backgroundPosition = "0% 100%";
-          }
-        }
-      }
-      console.log("Section "+i);
-      i++;
-      return;
-    });
-  }, options);
-
-
-  for (let y = 0; y < document.getElementsByClassName("outline-wrapper").length; y++) {
-    const element = document.getElementsByClassName("outline-wrapper")[y];
-    observer.observe(elem);
-  }
-  
-
   ///Reset Style for Production
 
   $(".removeclass").removeClass("removeclass");
-  
+
+   
+
 </script>

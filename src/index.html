@@ -51,16 +51,16 @@
         }
       
         canvas {
-            z-index: 1;
+            z-index: 99;
             top: 0;
             /* z-index:999999999; */
-            position:fixed;
+            position:sticky;
         }
 
         #gui{position: fixed; top:10px; left:4px; z-index:9999999;}
 
   body{
-    background:rgb(0, 0, 0) url('img/Planets/space1x.png');
+    background:rgb(0, 0, 0) url('../static/img/Planets/space1x.png');
     background-attachment: fixed;
   }
 
@@ -82,13 +82,14 @@
     <script type="importmap">
         {
             "imports": {
-                "three": "https://cdn.jsdelivr.net/npm/three@0.141.0/build/three.module.js",
-                "OBJLoader": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/OBJLoader.js",
-                "GLTFLoader": "https://unpkg.com/three@0.125.2/examples/js/loaders/GLTFLoader.js",
-                "EXRLoader": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/loaders/EXRLoader.js",
-                "RenderPass": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/RenderPass.js",
-                "UnrealBloomPass": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/UnrealBloomPass.js",
-                "EffectComposer": "https://cdn.jsdelivr.net/npm/three@0.141.0/examples/jsm/postprocessing/EffectComposer.js",
+                "three": "https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.module.js",
+                "OBJLoader": "https://cdn.jsdelivr.net/npm/three@0.148.0/examples/jsm/loaders/OBJLoader.js",
+                "OrbitControls": "https://cdn.jsdelivr.net/npm/three@0.148.0/examples/jsm/controls/OrbitControls.js",
+                "GLTFLoader": "https://unpkg.com/three@0.148.0/examples/js/loaders/GLTFLoader.js",
+                "EXRLoader": "https://cdn.jsdelivr.net/npm/three@0.148.0/examples/jsm/loaders/EXRLoader.js",
+                "RenderPass": "https://cdn.jsdelivr.net/npm/three@0.148.0/examples/jsm/postprocessing/RenderPass.js",
+                "UnrealBloomPass": "https://cdn.jsdelivr.net/npm/three@0.148.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+                "EffectComposer": "https://cdn.jsdelivr.net/npm/three@0.148.0/examples/jsm/postprocessing/EffectComposer.js",
                 "dat.gui": "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.min.js"
             }
         }
@@ -97,19 +98,15 @@
     
 </head>
 <body>
-    <div class="l"></div><div id="rail-planets" class="rail"><div id="cart-planets" class="cart"></div></div>
-    <canvas class="webgl"></canvas>
   
-    </video>
     <canvas id="canvas" ></canvas>
     
-    <div id="startButton" >Export Changes</div>
-    <div class="loadScreen"><div class="loadBar"><div id="loadbar_internal"></div></div></div>
+    <!-- <div class="loadScreen"><div class="loadBar"><div id="loadbar_internal"></div></div></div> -->
 </body>
 <script
     src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
     crossorigin="anonymous"
   ></script>
-<script type="module" src="script.js"></script>
+<script type="module" src="logo.js"></script>
 </html>

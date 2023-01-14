@@ -853,7 +853,7 @@ function loadTextures() {
     const progress = itemsLoaded / itemsTotal;
     loader.style.width = progress * 100 + "%";
     if (progress == 1) {
-      loader.parentElement.parentElement.style.display = "none";
+      // loader.parentElement.parentElement.style.display = "none";
       generateSpace();
     }
   };

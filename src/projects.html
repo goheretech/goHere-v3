@@ -1,0 +1,126 @@
+<script>
+
+  let fps = 100;
+  
+  const getMobileOS = () => {
+    const ua = navigator.userAgent;
+    if (/android/i.test(ua)) {
+      return "Android";
+    } else if (/iPad|iPhone|iPod/.test(ua)) {
+      return "iOS";
+    }
+    return "Other";
+  };
+  
+  let projectSlider = {
+      path: "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fprojects%2F",
+      pathProject: "{{wf {&quot;path&quot;:&quot;slideshow-name-2&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}",
+      parent: document.getElementById("slider"),
+      rail: document.getElementById("shell"),
+      class: "projectimg",
+      lastSlide: 0,
+      currentSlide: 0,
+      frames: 50,
+    };
+  
+    
+    if (getMobileOS() == "iOS") {
+      introSlider.frames = 20;
+    } 
+  
+  
+    window.addEventListener("load", (event) => {
+      addImages(projectSlider);
+      window.addEventListener("scroll", function () {
+        setupScroll(projectSlider);
+      });
+  
+      let time = 1000 / fps;
+      setInterval(() => {
+        updateSlider(projectSlider);
+  
+        function updateSlider(root) {
+          if (root.currentSlide == root.lastSlide) return;
+          else if (root.currentSlide < root.lastSlide) {
+            root.lastSlide--;
+            console.log("Slide:"+root.currentSlide)
+            changeSlide(root.lastSlide, root);
+          } else if (root.currentSlide > root.lastSlide) {
+            root.lastSlide++;
+            console.log("Slide:"+root.currentSlide)
+            changeSlide(root.lastSlide, root);
+          }
+        }
+      }, time);
+  
+      function changeSlide(slide, root) {
+        const imgs = document.getElementsByClassName(root.class);
+        console.log("Changing Slide")
+        for (let i = 0; i < imgs.length; i++) {
+          const current = imgs[i];
+          if (i <= slide && i >= slide - 2) {
+            current.style.display = "flex";
+          } else {
+            current.style.display = "none";
+          }
+        }
+      }
+  
+      function setupScroll(root) {
+        const y = window.scrollY;
+        const imgs = document.getElementsByClassName(root.class);
+        frame = imageSlider(y, root.rail, imgs);
+        
+        root.currentSlide = frame;
+      }
+    });
+  
+    function addImages(root) {
+      let img = [];
+      for (let i = 0; i < root.frames; i++) {
+          // if(i%2 == 0)
+        if (i <= 9) {
+          img.push(root.path + root.pathProject + "0" + i + ".webp?alt=media");
+        } else if (i <= 99) {
+          img.push(root.path + root.pathProject + i + ".webp?alt=media");
+        }
+        if (i + 1 == root.frames) {
+          addImagesDiv(img, root);
+        }
+      }
+    }
+  
+    function addImagesDiv(images, root) {
+      images.forEach((element, i) => {
+        let div = document.createElement("div");
+        div.style.backgroundImage = "url(" + element + ")";
+        div.style.zIndex = i;
+        div.classList.add(root.class);
+        preload(element);
+  
+        root.parent.appendChild(div);
+      });
+    }
+    function preload(url) {
+      var img = new Image();
+      img.src = url;
+    }
+  
+    function imageSlider(pixel, elem, slides) {
+      let top = elem.offsetTop - 400;
+      let height = elem.offsetHeight - 400;
+  
+      if (pixel > top && pixel < top + height) {
+        let a = pixel - top;
+        let h = height;
+        let p = slides.length;
+  
+        return Math.floor((p / h) * a, 0);
+      } else if (pixel >= top + height) {
+        return slides.length;
+      } else {
+        return 0;
+      }
+    }
+  
+  </script>
