@@ -1,17 +1,17 @@
 console.log('updated');
 
-// import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.module.js";
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.module.js";
 // import * as dat from "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.module.js";
 // import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.148.0/examples/jsm/controls/OrbitControls.js";
 // import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.148.0/examples/jsm/loaders/GLTFLoader.js";
 
-// let camera,
-//   scene = new THREE.Scene(),
-//   renderer,
-//   canvas,
-//   uniforms,
-//   irridescentMaterial,
-//   envMap;
+let camera,
+  scene = new THREE.Scene(),
+  renderer,
+  canvas,
+  uniforms,
+  irridescentMaterial,
+  envMap;
 
 //   let isIrridescent = true;
 
