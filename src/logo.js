@@ -80,8 +80,8 @@ function Start() {
 
 function SetupEnvMap() {
   // load the cubemap textures
-  var path = "../static/img/Tantolunden2/";
-  var format = ".jpg";
+  var path = "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2Fcubemap%2F";
+  var format = ".jpg?alt=media";
   var urls = [
     path + "px" + format,
     path + "nx" + format,
@@ -227,8 +227,8 @@ function SetupTestMesh()
 }
 function SetupLogo() {
   
-  const loader = new GLTFLoader().setPath("../static/models/");
-  loader.load("betterLogo.glb", function (gltf) {
+  const loader = new GLTFLoader().setPath("https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2F");
+  loader.load("betterLogo.glb?alt=media", function (gltf) {
     
     logo = gltf.scene.children[0];
     let logo2 = gltf.scene.children[1];
@@ -244,7 +244,7 @@ function SetupLogo() {
     }
   });
 
-  loader.load("hololens.glb", function (gltf) {
+  loader.load("hololens.glb?alt=media", function (gltf) {
     
     scene.add(gltf.scene);
     FinalRender();
