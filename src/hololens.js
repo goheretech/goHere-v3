@@ -1,6 +1,6 @@
 
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.module.js";
-import * as dat from "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.module.js";
+// import * as dat from "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.module.js";
 import { OrbitControls } from "OrbitControls";
 import { GLTFLoader } from "GLTFLoader";
 
@@ -55,7 +55,7 @@ function LogoMaterial(clr)
   return new THREE.MeshStandardMaterial(
   {
     color: clr,
-    metalness: 0.0,
+    metalness: 1.0,
     roughness:0.1,
     envMap: envMap
   });
@@ -79,7 +79,7 @@ function Start() {
 
 function SetupEnvMap() {
   // load the cubemap textures
-  var path = "../static/img/FishermansBastion/";
+  var path = "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2Fcubemap%2F";
   var format = ".jpg?alt=media";
   var urls = [
     path + "px" + format,
@@ -177,7 +177,7 @@ function SetupIridescentMaterial() {
 }
 
 function SetupRenderer() {
-  canvas = document.getElementById("canvas");
+  canvas = document.getElementById("canvas2");
   renderer = new THREE.WebGLRenderer({
     canvas: canvas,
     antialias: true,
@@ -226,27 +226,26 @@ function SetupTestMesh()
 }
 function SetupLogo() {
   
-  const loader = new GLTFLoader().setPath("../static/models/");
-  loader.load("betterLogo.glb", function (gltf) {
+  const loader = new GLTFLoader().setPath("https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2F");
+  loader.load("betterLogo.glb?alt=media", function (gltf) {
     
     logo = gltf.scene.children[0];
     let logo2 = gltf.scene.children[1];
-    scene.add(gltf.scene);
+    // scene.add(gltf.scene);
     console.log(logo);
     for (let i = 0; i < logo.children.length; i++) {
       if(isIrridescent)
       {
-        // logo2.children[i].material = irridescentMaterial;
-        logo.children[i].material = logoMaterials[i];
-        scene.add(gltf.scene);
+        logo2.children[i].material = irridescentMaterial;
       }else{
+        // logo.children[i].material = logoMaterials[i];
       }
     }
   });
 
   loader.load("hololens.glb?alt=media", function (gltf) {
     
-    // scene.add(gltf.scene);
+    scene.add(gltf.scene);
     FinalRender();
 
   });
