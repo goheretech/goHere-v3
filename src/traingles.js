@@ -1,9 +1,7 @@
 
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.module.js";
 import * as dat from "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.module.js";
-import { EffectComposer } from 'EffectComposer';
-			import { RenderPass } from 'RenderPass';
-			import { BokehPass } from 'BokehPass';
+
 let
   triangles = [];
 
