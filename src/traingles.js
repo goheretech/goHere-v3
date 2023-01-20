@@ -179,33 +179,6 @@ function SetupCamera(master) {
 //   const controls = new OrbitControls(camera, renderer.domElement);
 }
 
-function InitPostprocessing(master) {
-
-
-    var width = window.innerWidth || 1;
-var height = window.innerHeight || 1;
-var parameters = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat, stencilBuffer: false };
-
-var renderTarget = new THREE.WebGLRenderTarget( width, height, parameters );
-
-    let renderPass = new RenderPass( master.scene, master.camera, );
-
-    let bokehPass = new BokehPass( master.scene, master.camera, {
-        transparent: true,
-        focus: 1.0,
-        aperture: 0.025,
-        maxblur: 0.01
-    } );
-
-    let composer = new EffectComposer(master.renderer, renderTarget);
-
-    composer.addPass( renderPass );
-    composer.addPass( bokehPass );
-
-    master.postprocessing.composer = composer;
-    master.postprocessing.bokeh = bokehPass;
-
-}
 
 function FinalRender(master) {
   master.renderer.render(master.scene, master.camera);
