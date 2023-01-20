@@ -77,7 +77,6 @@ function MasterSetup(master)
 {
     SetupRenderer(master);
     SetupCamera(master);
-    InitPostprocessing(master)
     SetupLight(master);
     GenerateTriangles(master);
     FinalRender(master);
