@@ -38,30 +38,30 @@ let sections = [
       rotation: new THREE.Vector3(0, -3, -Math.PI),
     }
   ),
-  Section(
-    "canvas2",
-    "slide2",
-    {
-      position: new THREE.Vector3(0, -50, 0),
-      rotation: new THREE.Vector3(Math.PI / 2, -3, 0),
-    },
-    {
-      position: new THREE.Vector3(0, 20, 0),
-      rotation: new THREE.Vector3(Math.PI / 2, 3, 0),
-    }
-  ),
-  Section(
-    "canvas3",
-    "slide3",
-    {
-      position: new THREE.Vector3(0, 5, 0),
-      rotation: new THREE.Vector3(0, 3, 0),
-    },
-    {
-      position: new THREE.Vector3(0, -5, 0),
-      rotation: new THREE.Vector3(0, -3, 0),
-    }
-  ),
+  // Section(
+  //   "canvas2",
+  //   "slide2",
+  //   {
+  //     position: new THREE.Vector3(0, -50, 0),
+  //     rotation: new THREE.Vector3(Math.PI / 2, -3, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, 20, 0),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 3, 0),
+  //   }
+  // ),
+  // Section(
+  //   "canvas3",
+  //   "slide3",
+  //   {
+  //     position: new THREE.Vector3(0, 5, 0),
+  //     rotation: new THREE.Vector3(0, 3, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, -5, 0),
+  //     rotation: new THREE.Vector3(0, -3, 0),
+  //   }
+  // ),
   Section(
     "canvas4",
     "slide4",
