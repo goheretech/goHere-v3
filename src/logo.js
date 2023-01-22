@@ -3,6 +3,7 @@ import * as dat from "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.m
 import { OrbitControls } from "OrbitControls";
 import { GLTFLoader } from "GLTFLoader";
 import { RGBELoader } from "RGBELoader";
+import { Vector3 } from "three";
 
 let envMap, logo;
 
@@ -25,12 +26,57 @@ const hdrEquirect = new RGBELoader()
   });
 
 let sections = [
-  Section(0, 20, "canvas1", Color.Cyan),
-  Section(20, 40, "canvas2", Color.Purple),
-  Section(60, 100, "canvas4"),
+  Section(
+    "canvas1",
+    "slide1",
+    {
+      position: new THREE.Vector3(0, 80, 50),
+      rotation: new THREE.Vector3(0, 3, Math.PI),
+    },
+    {
+      position: new THREE.Vector3(0, -50, 0),
+      rotation: new THREE.Vector3(0, -3, -Math.PI),
+    }
+  ),
+  Section(
+    "canvas2",
+    "slide2",
+    {
+      position: new THREE.Vector3(0, -50, 0),
+      rotation: new THREE.Vector3(Math.PI / 2, -3, 0),
+    },
+    {
+      position: new THREE.Vector3(0, 20, 0),
+      rotation: new THREE.Vector3(Math.PI / 2, 3, 0),
+    }
+  ),
+  Section(
+    "canvas3",
+    "slide3",
+    {
+      position: new THREE.Vector3(0, 5, 0),
+      rotation: new THREE.Vector3(0, 3, 0),
+    },
+    {
+      position: new THREE.Vector3(0, -5, 0),
+      rotation: new THREE.Vector3(0, -3, 0),
+    }
+  ),
+  Section(
+    "canvas4",
+    "slide4",
+    {
+      position: new THREE.Vector3(0, 5, 0),
+      rotation: new THREE.Vector3(0, 3, 0),
+    },
+    {
+      position: new THREE.Vector3(0, -5, 0),
+      rotation: new THREE.Vector3(0, -3, 0),
+    }
+  ),
 ];
 
-function Section(top, bottom, tag, color = "multi", size = 1) {
+function Section(tag, parent, start, end, color = "multi", size = 1) {
   return {
     camera: "",
     scene: new THREE.Scene(),
@@ -39,8 +85,13 @@ function Section(top, bottom, tag, color = "multi", size = 1) {
     canvasTag: tag,
     color: color,
     logo: "",
-    topP: top,
-    bottomP: bottom,
+    parent: parent,
+    topPixel: "",
+    bottomPixel: "",
+    transforms: {
+      start: start,
+      end: end,
+    },
   };
 }
 let logoMaterials = [
@@ -63,8 +114,6 @@ function LogoMaterial(clr) {
     specularIntensity: 1,
     specularColor: 0xffffff,
     envMapIntensity: 1,
-    lightIntensity: 1,
-    exposure: 1,
     envMap: hdrEquirect,
   });
   clr.Material = mat;
@@ -73,7 +122,7 @@ function LogoMaterial(clr) {
 
 let start = {
   camera: {
-    position: new THREE.Vector3(0, 0, 80),
+    position: new THREE.Vector3(0, 0, 100),
     rotation: new THREE.Vector3(0, 0, 0),
   },
 
@@ -145,7 +194,6 @@ function SetupLogo() {
       master.logo = logo.clone(true);
 
       for (let p = 0; p < master.logo.children.length; p++) {
-        console.log(`Section:${s} - Pod:${p}`);
         let pod = master.logo.children[p];
         pod.material = logoMaterials[p];
         if (master.color != "multi") {
@@ -154,6 +202,7 @@ function SetupLogo() {
         pod.material.envMapIntensity = 1.5;
       }
       master.scene.add(master.logo);
+      console.log(master.logo);
     }
     FinalRender();
   });
@@ -164,6 +213,7 @@ function FinalRender(master) {
     const master = sections[i];
     master.renderer.render(master.scene, master.camera);
   }
+  getPixels();
   requestAnimationFrame(Render);
 }
 
@@ -181,6 +231,7 @@ function onWindowResize() {
     master.camera.aspect = window.innerWidth / window.outerHeight;
     master.camera.updateProjectionMatrix();
     master.renderer.setSize(window.innerWidth, window.outerHeight);
+    getPixels();
   }
 }
 function onScroll() {
@@ -194,13 +245,95 @@ function onScroll() {
 
   const scrollPos = window.pageYOffset;
 
-  console.log(y);
-
   for (let i = 0; i < sections.length; i++) {
     const master = sections[i];
-    master.logo.rotation.z = scrollPos * 0.003;
-    // master.camera.position.y = mapRange(y, master.top, master.bottom, 0, 0);
+
+    let p = GetPercentage(scrollPos, master);
+
+    let _transform = CurrentTransform(p, master);
+
+    master.logo.position.x = _transform.p.x;
+    master.logo.position.y = _transform.p.y;
+    master.logo.position.z = _transform.p.z;
+    master.logo.rotation.x = _transform.r.x;
+    master.logo.rotation.y = _transform.r.y;
+    master.logo.rotation.z = _transform.r.z;
   }
+}
+
+function CurrentTransform(p, master) {
+  let _p = p / 100;
+  // console.log(`Percent ${_p}`);
+  let pos = new THREE.Vector3(
+    lerp(
+      _p,
+      master.transforms.start.position.x,
+      master.transforms.end.position.x
+    ),
+    lerp(
+      _p,
+      master.transforms.start.position.y,
+      master.transforms.end.position.y
+    ),
+    lerp(
+      _p,
+      master.transforms.start.position.z,
+      master.transforms.end.position.z
+    )
+  );
+  let rot = new THREE.Vector3(
+    lerp(
+      _p,
+      master.transforms.start.rotation.x,
+      master.transforms.end.rotation.x
+    ),
+    lerp(
+      _p,
+      master.transforms.start.rotation.y,
+      master.transforms.end.rotation.y
+    ),
+    lerp(
+      _p,
+      master.transforms.start.rotation.z,
+      master.transforms.end.rotation.z
+    )
+  );
+
+  return { p: pos, r: rot };
+}
+
+function lerp(t, start, end) {
+  let l = (1 - t) * start + t * end;
+  return l;
+}
+
+function GetPercentage(scrollPos, master) {
+  let per = 0;
+  if (scrollPos > master.topPixel && scrollPos < master.bottomPixel) {
+    per = mapRange(scrollPos, master.topPixel, master.bottomPixel, 0, 100);
+  } else if (scrollPos >= master.bottomPixel) {
+    per = 100;
+  }
+  return per;
+}
+
+function getPixels() {
+  for (let i = 0; i < sections.length; i++) {
+    const master = sections[i];
+    const range = divRange(master.parent);
+    master.topPixel = range.top;
+    master.bottomPixel = range.bottom;
+  }
+}
+
+function divRange(id) {
+  var div = document.getElementById(id);
+  var rect = div.getBoundingClientRect();
+  // console.log(div.offsetHeight);
+  var top = div.offsetTop - div.offsetHeight;
+  var bottom = div.offsetTop + div.offsetHeight;
+
+  return { top: top, bottom: bottom };
 }
 
 function mapRange(num, inputMin, inputMax, outputMin, outputMax) {
