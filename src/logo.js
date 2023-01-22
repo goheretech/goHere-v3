@@ -1,179 +1,188 @@
-
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.module.js";
 import * as dat from "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.module.js";
 import { OrbitControls } from "OrbitControls";
 import { GLTFLoader } from "GLTFLoader";
 import { RGBELoader } from "RGBELoader";
 
-let camera,
-  scene = new THREE.Scene(),
-  renderer,
-  canvas,
-  envMap;
+let envMap, logo;
 
-  const hdrEquirect = new RGBELoader()
-				.setPath( 'https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2Fcubemap%2F' )
-				.load( 'royal_esplanade_1k.hdr?alt=media', function () {
+const Color = {
+  Red: { Hex: 0xe7180c, Material: "" },
+  Orange: { Hex: 0xff8008, Material: "" },
+  Yellow: { Hex: 0xeec200, Material: "" },
+  Green: { Hex: 0x027b00, Material: "" },
+  Cyan: { Hex: 0x0ba4ff, Material: "" },
+  Blue: { Hex: 0x002abc, Material: "" },
+  Purple: { Hex: 0x7200bc, Material: "" },
+};
 
-					hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;
+const hdrEquirect = new RGBELoader()
+  .setPath(
+    "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2Fcubemap%2F"
+  )
+  .load("royal_esplanade_1k.hdr?alt=media", function () {
+    hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;
+  });
 
+let sections = [
+  Section(0, 20, "canvas1", Color.Orange),
+  Section(20, 40, "canvas2", Color.Red),
+  Section(40, 60, "canvas3", Color.Cyan),
+  Section(60, 100, "canvas4"),
+];
 
-				} );
+function Section(top, bottom, tag, color = "multi", size = 1) {
+  return {
+    camera: "",
+    scene: new THREE.Scene(),
+    renderer: "",
+    canvas: "",
+    canvasTag: tag,
+    color: color,
+    logo: "",
+    topP: top,
+    bottomP: bottom,
+  };
+}
+let logoMaterials = [
+  LogoMaterial(Color.Orange),
+  LogoMaterial(Color.Yellow),
+  LogoMaterial(Color.Green),
+  LogoMaterial(Color.Cyan),
+  LogoMaterial(Color.Blue),
+  LogoMaterial(Color.Purple),
+  LogoMaterial(Color.Red),
+];
 
-
-  let logoMaterials = 
-  [
-    LogoMaterial(0xFF8008),
-    LogoMaterial(0xEEC200),
-    LogoMaterial(0x027B00),
-    LogoMaterial(0x0BA4FF),
-    LogoMaterial(0x002ABC),
-    LogoMaterial(0x7200BC),
-    LogoMaterial(0xE7180C),
-  ];
-  
-  function LogoMaterial(clr)
-  {
-    return new THREE.MeshPhysicalMaterial(
-    {
-      color: clr,
-				transmission: 0,
-				opacity: 1,
-				metalness: 1,
-				roughness: 0.1,
-				specularIntensity: 1,
-				specularColor: 0xffffff,
-				envMapIntensity: 1,
-				lightIntensity: 1,
-				exposure: 1,
-        envMap: hdrEquirect
-    });
-  }
-
-
-let logo;
-
+function LogoMaterial(clr) {
+  const mat = new THREE.MeshPhysicalMaterial({
+    color: clr.Hex,
+    transmission: 0,
+    opacity: 1,
+    metalness: 1,
+    roughness: 0.1,
+    specularIntensity: 1,
+    specularColor: 0xffffff,
+    envMapIntensity: 1,
+    lightIntensity: 1,
+    exposure: 1,
+    envMap: hdrEquirect,
+  });
+  clr.Material = mat;
+  return mat;
+}
 
 let start = {
   camera: {
     position: new THREE.Vector3(0, 0, 80),
     rotation: new THREE.Vector3(0, 0, 0),
   },
- 
+
   ambient: { intensity: 1.0 },
 };
-
 
 Start();
 
 function Start() {
-  SetupEnvMap();
-  SetupRenderer();
-  SetupCamera();
+  for (let i = 0; i < sections.length; i++) {
+    let section = sections[i];
+    SetupRenderer(section);
+    SetupCamera(section);
+  }
   SetupLogo();
-  FinalRender();
+  window.addEventListener("scroll", onScroll);
+  window.addEventListener("resize", onWindowResize, false);
+  // FinalRender();
 }
 
-function SetupEnvMap() {
-  // load the cubemap textures
-  var path = "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2Fcubemap%2F";
-  var format = ".jpg?alt=media";
-  var urls = [
-    path + "posx" + format,
-    path + "negx" + format,
-    path + "posy" + format,
-    path + "negy" + format,
-    path + "posz" + format,
-    path + "negz" + format,
-  ];
-
-  envMap = new THREE.CubeTextureLoader().load(urls);
-  envMap.format = THREE.RGBFormat;
-}
-
-
-
-
-function SetupRenderer() {
-  canvas = document.getElementById("canvas");
-  renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
+function SetupRenderer(master) {
+  master.canvas = document.getElementById(master.canvasTag);
+  master.renderer = new THREE.WebGLRenderer({
+    canvas: master.canvas,
     antialias: true,
     alpha: true,
   });
 
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.outputEncoding = THREE.sRGBEncoding;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0xeb4034, 0);
-  scene.environment = envMap;
+  master.renderer.setPixelRatio(window.devicePixelRatio);
+  master.renderer.setSize(window.innerWidth, window.innerHeight);
+  master.renderer.outputEncoding = THREE.sRGBEncoding;
+  master.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  master.renderer.setPixelRatio(window.devicePixelRatio);
+  master.renderer.setSize(window.innerWidth, window.innerHeight);
+  master.renderer.setClearColor(0xeb4034, 0);
+  master.scene.environment = envMap;
 }
 
-function SetupCamera() {
-  camera = new THREE.PerspectiveCamera(
+function SetupCamera(master) {
+  master.camera = new THREE.PerspectiveCamera(
     35,
     window.innerWidth / window.innerHeight,
     0.1,
     3000
   );
-  camera.position.set(
+  master.camera.position.set(
     start.camera.position.x,
     start.camera.position.y,
     start.camera.position.z
   );
-  camera.rotation.set(
+  master.camera.rotation.set(
     start.camera.rotation.x,
     start.camera.rotation.y,
     start.camera.rotation.z
   );
-  scene.add(camera);
+  master.scene.add(master.camera);
   // const controls = new OrbitControls(camera, renderer.domElement);
 }
 
 function SetupLogo() {
-  
-  const loader = new GLTFLoader().setPath("https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2F");
+  const loader = new GLTFLoader().setPath(
+    "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2F"
+  );
   loader.load("betterLogo.glb?alt=media", function (gltf) {
-    
     logo = gltf.scene.children[0];
-    scene.add(logo);
 
-    for (let i = 0; i < logo.children.length; i++) {
-      let pod = logo.children[i];
-      console.log(pod.material);
-      pod.material.color = logoMaterials[i].color;
-      pod.material.envMapIntensity = 1.5;
-      pod.material = logoMaterials[i];
+    for (let s = 0; s < sections.length; s++) {
+      const master = sections[s];
+      master.logo = logo.clone(true);
+
+      for (let p = 0; p < master.logo.children.length; p++) {
+        console.log(`Section:${s} - Pod:${p}`);
+        let pod = master.logo.children[p];
+        pod.material = logoMaterials[p];
+        if (master.color != "multi") {
+          pod.material = master.color.Material;
+        }
+        pod.material.envMapIntensity = 1.5;
+      }
+      master.scene.add(master.logo);
     }
     FinalRender();
   });
-
-
 }
 
-
-function FinalRender() {
-  renderer.render(scene, camera);
+function FinalRender(master) {
+  for (let i = 0; i < sections.length; i++) {
+    const master = sections[i];
+    master.renderer.render(master.scene, master.camera);
+  }
   requestAnimationFrame(Render);
-  window.addEventListener("scroll", onScroll);
-  window.addEventListener("resize", onWindowResize, false);
 }
-
-
-
 
 function Render() {
-  renderer.render(scene, camera);
+  for (let i = 0; i < sections.length; i++) {
+    const master = sections[i];
+    master.renderer.render(master.scene, master.camera);
+  }
   requestAnimationFrame(Render);
 }
 
 function onWindowResize() {
-  camera.aspect = window.innerWidth / window.outerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.outerHeight);
+  for (let i = 0; i < sections.length; i++) {
+    const master = sections[i];
+    master.camera.aspect = window.innerWidth / window.outerHeight;
+    master.camera.updateProjectionMatrix();
+    master.renderer.setSize(window.innerWidth, window.outerHeight);
+  }
 }
 function onScroll() {
   //Get percent scrolled
@@ -182,16 +191,22 @@ function onScroll() {
     st = "scrollTop",
     sh = "scrollHeight";
   var y = ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100;
-   //0 to 100
+  //0 to 100
 
-   const scrollPos = window.pageYOffset;
+  const scrollPos = window.pageYOffset;
 
-   logo.rotation.z = scrollPos * 0.003;
-  // Update the camera's y position based on the scroll position
-  camera.position.y = mapRange(y,80,100,25,-10);
+  console.log(y);
+
+  for (let i = 0; i < sections.length; i++) {
+    const master = sections[i];
+    master.logo.rotation.z = scrollPos * 0.003;
+    // master.camera.position.y = mapRange(y, master.top, master.bottom, 0, 0);
+  }
 }
 
 function mapRange(num, inputMin, inputMax, outputMin, outputMax) {
-  return (num - inputMin) * (outputMax - outputMin) / (inputMax - inputMin) + outputMin;
+  return (
+    ((num - inputMin) * (outputMax - outputMin)) / (inputMax - inputMin) +
+    outputMin
+  );
 }
-
