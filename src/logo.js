@@ -90,7 +90,7 @@ function SetupCamera() {
     start.camera.rotation.z
   );
   scene.add(camera);
-  const controls = new OrbitControls(camera, renderer.domElement);
+  // const controls = new OrbitControls(camera, renderer.domElement);
 }
 
 function SetupLogo() {
@@ -138,5 +138,10 @@ function onScroll() {
     b = document.body,
     st = "scrollTop",
     sh = "scrollHeight";
-  var y = ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100; //0 to 100
+  var y = ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100;
+   //0 to 100
+
+   const scrollPos = window.pageYOffset;
+  // Update the camera's y position based on the scroll position
+  camera.position.y = scrollPos * -0.1;
 }
