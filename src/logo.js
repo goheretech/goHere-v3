@@ -25,9 +25,8 @@ const hdrEquirect = new RGBELoader()
   });
 
 let sections = [
-  Section(0, 20, "canvas1", Color.Orange),
-  Section(20, 40, "canvas2", Color.Red),
-  Section(40, 60, "canvas3", Color.Cyan),
+  Section(0, 20, "canvas1", Color.Cyan),
+  Section(20, 40, "canvas2", Color.Purple),
   Section(60, 100, "canvas4"),
 ];
 
