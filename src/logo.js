@@ -3,6 +3,7 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.m
 import * as dat from "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.module.js";
 import { OrbitControls } from "OrbitControls";
 import { GLTFLoader } from "GLTFLoader";
+import { RGBELoader } from "RGBELoader";
 
 let camera,
   scene = new THREE.Scene(),
@@ -10,25 +11,42 @@ let camera,
   canvas,
   envMap;
 
+  const hdrEquirect = new RGBELoader()
+				.setPath( 'https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2Fcubemap%2F' )
+				.load( 'royal_esplanade_1k.hdr?alt=media', function () {
+
+					hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;
+
+
+				} );
+
+
   let logoMaterials = 
   [
-    LogoMaterial(0xF37300),
-    LogoMaterial(0xF3C700),
+    LogoMaterial(0xFF8008),
+    LogoMaterial(0xEEC200),
     LogoMaterial(0x027B00),
     LogoMaterial(0x0BA4FF),
-    LogoMaterial(0x323EE7),
-    LogoMaterial(0xE90E87),
+    LogoMaterial(0x002ABC),
+    LogoMaterial(0x7200BC),
     LogoMaterial(0xE7180C),
   ];
   
   function LogoMaterial(clr)
   {
-    return new THREE.MeshStandardMaterial(
+    return new THREE.MeshPhysicalMaterial(
     {
       color: clr,
-      metalness: 1.0,
-      roughness:0.2,
-      envMap: envMap
+				transmission: 0,
+				opacity: 1,
+				metalness: 1,
+				roughness: 0.1,
+				specularIntensity: 1,
+				specularColor: 0xffffff,
+				envMapIntensity: 1,
+				lightIntensity: 1,
+				exposure: 1,
+        envMap: hdrEquirect
     });
   }
 
@@ -61,17 +79,19 @@ function SetupEnvMap() {
   var path = "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2Fcubemap%2F";
   var format = ".jpg?alt=media";
   var urls = [
-    path + "px" + format,
-    path + "nx" + format,
-    path + "py" + format,
-    path + "ny" + format,
-    path + "pz" + format,
-    path + "nz" + format,
+    path + "posx" + format,
+    path + "negx" + format,
+    path + "posy" + format,
+    path + "negy" + format,
+    path + "posz" + format,
+    path + "negz" + format,
   ];
 
   envMap = new THREE.CubeTextureLoader().load(urls);
   envMap.format = THREE.RGBFormat;
 }
+
+
 
 
 function SetupRenderer() {
@@ -122,7 +142,10 @@ function SetupLogo() {
     scene.add(logo);
 
     for (let i = 0; i < logo.children.length; i++) {
-      const pod = logo.children[i];
+      let pod = logo.children[i];
+      console.log(pod.material);
+      pod.material.color = logoMaterials[i].color;
+      pod.material.envMapIntensity = 1.5;
       pod.material = logoMaterials[i];
     }
     FinalRender();
