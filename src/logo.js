@@ -30,11 +30,11 @@ let sections = [
     "canvas1",
     "slide1",
     {
-      position: new THREE.Vector3(0, 80, 50),
+      position: new THREE.Vector3(0, 90, 50),
       rotation: new THREE.Vector3(0, 3, Math.PI),
     },
     {
-      position: new THREE.Vector3(0, -50, 0),
+      position: new THREE.Vector3(0, -70, 0),
       rotation: new THREE.Vector3(0, -3, -Math.PI),
     }
   ),
@@ -66,12 +66,12 @@ let sections = [
     "canvas4",
     "slide4",
     {
-      position: new THREE.Vector3(0, 5, 0),
-      rotation: new THREE.Vector3(0, 3, 0),
+      position: new THREE.Vector3(0, 15, 0),
+      rotation: new THREE.Vector3(Math.PI / 2, 3, 0),
     },
     {
-      position: new THREE.Vector3(0, -5, 0),
-      rotation: new THREE.Vector3(0, -3, 0),
+      position: new THREE.Vector3(0, -15, 0),
+      rotation: new THREE.Vector3(Math.PI / 2, -3, 0),
     }
   ),
 ];
