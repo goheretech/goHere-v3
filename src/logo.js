@@ -14,6 +14,8 @@ let camera,
 
 let logo;
 
+let material = new THREE.MeshNormalMaterial();
+
 let start = {
   camera: {
     position: new THREE.Vector3(0, 0, 30),
@@ -22,9 +24,6 @@ let start = {
  
   ambient: { intensity: 1.0 },
 };
-
-
-
 
 
 Start();
@@ -54,9 +53,6 @@ function SetupEnvMap() {
   envMap.format = THREE.RGBFormat;
 }
 
-
-
- 
 
 function SetupRenderer() {
   canvas = document.getElementById("canvas");
@@ -103,7 +99,12 @@ function SetupLogo() {
   loader.load("betterLogo.glb?alt=media", function (gltf) {
     
     logo = gltf.scene.children[0];
-    scene.add(gltf.scene);
+    scene.add(logo);
+
+    for (let i = 0; i < logo.children.length; i++) {
+      const pod = logo.children[i];
+      pod.material = material;
+    }
     FinalRender();
   });
 
