@@ -328,6 +328,7 @@ function getPixels() {
 
 function divRange(id) {
   var div = document.getElementById(id);
+  console.log(`ID[${id}]: ${div}`);
   var rect = div.getBoundingClientRect();
   // console.log(div.offsetHeight);
   var top = div.offsetTop - div.offsetHeight;
