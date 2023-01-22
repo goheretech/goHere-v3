@@ -18,7 +18,7 @@ let material = new THREE.MeshNormalMaterial();
 
 let start = {
   camera: {
-    position: new THREE.Vector3(0, 0, 50),
+    position: new THREE.Vector3(0, 0, 80),
     rotation: new THREE.Vector3(0, 0, 0),
   },
  
