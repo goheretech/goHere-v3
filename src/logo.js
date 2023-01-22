@@ -39,7 +39,7 @@ function Start() {
 
 function SetupEnvMap() {
   // load the cubemap textures
-  var path = "../static/img/FishermansBastion/";
+  var path = "https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2Fcubemap%2F";
   var format = ".jpg?alt=media";
   var urls = [
     path + "px" + format,
@@ -99,18 +99,12 @@ function SetupCamera() {
 
 function SetupLogo() {
   
-  const loader = new GLTFLoader().setPath("../static/models/");
-  loader.load("betterLogo.glb", function (gltf) {
+  const loader = new GLTFLoader().setPath("https://firebasestorage.googleapis.com/v0/b/gohere-24b3c.appspot.com/o/gohere%2Fnewv%2F");
+  loader.load("betterLogo.glb?alt=media", function (gltf) {
     
     logo = gltf.scene.children[0];
     scene.add(gltf.scene);
-    
-  });
-
-  loader.load("hololens.glb?alt=media", function (gltf) {
-    
     FinalRender();
-
   });
 
 
