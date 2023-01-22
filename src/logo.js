@@ -146,7 +146,7 @@ function onScroll() {
    console.log(y);
    logo.rotation.z = scrollPos * 0.003;
   // Update the camera's y position based on the scroll position
-  camera.position.y = mapRange(y,75,100,20,-20);
+  camera.position.y = mapRange(y,80,100,25,-10);
 }
 
 function mapRange(num, inputMin, inputMax, outputMin, outputMax) {
