@@ -144,10 +144,12 @@ function onScroll() {
    const scrollPos = window.pageYOffset;
 
    console.log(y);
+   logo.rotation.z = scrollPos * 0.003;
   // Update the camera's y position based on the scroll position
-  camera.position.y = mapRange(y);
+  camera.position.y = mapRange(y,75,100,20,-20);
 }
 
-function mapRange(num) {
-  return -1* (num - 87.5) / 7.5;
+function mapRange(num, inputMin, inputMax, outputMin, outputMax) {
+  return (num - inputMin) * (outputMax - outputMin) / (inputMax - inputMin) + outputMin;
 }
+
