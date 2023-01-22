@@ -18,7 +18,7 @@ let material = new THREE.MeshNormalMaterial();
 
 let start = {
   camera: {
-    position: new THREE.Vector3(0, 0, 30),
+    position: new THREE.Vector3(0, 0, 50),
     rotation: new THREE.Vector3(0, 0, 0),
   },
  
@@ -149,5 +149,5 @@ function onScroll() {
 }
 
 function mapRange(num) {
-  return (num - 87) / 10;
+  return -1* (num - 87.5) / 7.5;
 }
