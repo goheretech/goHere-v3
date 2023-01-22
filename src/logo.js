@@ -10,11 +10,31 @@ let camera,
   canvas,
   envMap;
 
+  let logoMaterials = 
+  [
+    LogoMaterial(0xF37300),
+    LogoMaterial(0xF3C700),
+    LogoMaterial(0x027B00),
+    LogoMaterial(0x0BA4FF),
+    LogoMaterial(0x323EE7),
+    LogoMaterial(0xE90E87),
+    LogoMaterial(0xE7180C),
+  ];
+  
+  function LogoMaterial(clr)
+  {
+    return new THREE.MeshStandardMaterial(
+    {
+      color: clr,
+      metalness: 1.0,
+      roughness:0.2,
+      envMap: envMap
+    });
+  }
 
 
 let logo;
 
-let material = new THREE.MeshNormalMaterial();
 
 let start = {
   camera: {
@@ -103,7 +123,7 @@ function SetupLogo() {
 
     for (let i = 0; i < logo.children.length; i++) {
       const pod = logo.children[i];
-      pod.material = material;
+      pod.material = logoMaterials[i];
     }
     FinalRender();
   });
@@ -143,7 +163,6 @@ function onScroll() {
 
    const scrollPos = window.pageYOffset;
 
-   console.log(y);
    logo.rotation.z = scrollPos * 0.003;
   // Update the camera's y position based on the scroll position
   camera.position.y = mapRange(y,80,100,25,-10);
