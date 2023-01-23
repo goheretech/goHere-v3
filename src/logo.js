@@ -71,7 +71,7 @@ let sections = [
       rotation: new THREE.Vector3(Math.PI / 2, 6, 0),
     },
     {
-      position: new THREE.Vector3(0, -40, 0),
+      position: new THREE.Vector3(0, -10, 0),
       rotation: new THREE.Vector3((2 * Math.PI) / 2, -3, 0),
     }
   ),
