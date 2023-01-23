@@ -64,23 +64,6 @@ let sections = [
   ),
 
   Section(
-    "canvas3",
-    "slide3",
-    {
-      position: new THREE.Vector3(-30, -5, 20),
-      rotation: new THREE.Vector3(Math.PI / 2, -3, -Math.PI / 2),
-    },
-    {
-      position: new THREE.Vector3(20, -5, 20),
-      rotation: new THREE.Vector3(
-        Math.PI / 2,
-        -3,
-        (-Math.PI / 2) * Math.PI * 2
-      ),
-    }
-  ),
-
-  Section(
     "canvas4",
     "slide4",
     {
