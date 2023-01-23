@@ -87,32 +87,32 @@ let sections = [
       rotation: new THREE.Vector3((2 * Math.PI) / 2, -3, 0),
     }
   ),
-  // Section(
-  //   "canvasWhite1",
-  //   "slide3",
-  //   {
-  //     position: new THREE.Vector3(0, -5, 30),
-  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
-  //   },
-  //   {
-  //     position: new THREE.Vector3(0, -10, 30),
-  //     rotation: new THREE.Vector3(Math.PI / 2, -Math.PI * 3, Math.PI * 9),
-  //   },
-  //   Color.Green
-  // ),
-  // Section(
-  //   "canvasWhite2",
-  //   "slide3",
-  //   {
-  //     position: new THREE.Vector3(0, -5, 30),
-  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
-  //   },
-  //   {
-  //     position: new THREE.Vector3(0, -10, 30),
-  //     rotation: new THREE.Vector3(Math.PI / 2, Math.PI * 5, Math.PI * 5),
-  //   },
-  //   Color.Red
-  // ),
+  Section(
+    "canvasWhite1",
+    "slide3",
+    {
+      position: new THREE.Vector3(0, -5, 30),
+      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+    },
+    {
+      position: new THREE.Vector3(0, -10, 30),
+      rotation: new THREE.Vector3(Math.PI / 2, -Math.PI * 3, Math.PI * 9),
+    },
+    Color.Green
+  ),
+  Section(
+    "canvasWhite2",
+    "slide3",
+    {
+      position: new THREE.Vector3(0, -5, 30),
+      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+    },
+    {
+      position: new THREE.Vector3(0, -10, 30),
+      rotation: new THREE.Vector3(Math.PI / 2, Math.PI * 5, Math.PI * 5),
+    },
+    Color.Red
+  ),
 ];
 
 function Section(tag, parent, start, end, color = "multi", size = 1) {
