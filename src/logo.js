@@ -54,12 +54,12 @@ let sections = [
     "canvas3",
     "slide3",
     {
-      position: new THREE.Vector3(-50, 0, 20),
-      rotation: new THREE.Vector3(Math.PI / 2, 9, 0),
+      position: new THREE.Vector3(-20, 0, 20),
+      rotation: new THREE.Vector3(Math.PI / 2, -3, -Math.PI / 2),
     },
     {
-      position: new THREE.Vector3(150, 0, 20),
-      rotation: new THREE.Vector3(Math.PI / 2, -3, 0),
+      position: new THREE.Vector3(20, 0, 20),
+      rotation: new THREE.Vector3(Math.PI / 2, -3, Math.PI / 2),
     }
   ),
   Section(
