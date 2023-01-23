@@ -67,7 +67,7 @@ let sections = [
     "canvas4",
     "slide4",
     {
-      position: new THREE.Vector3(0, 90, 0),
+      position: new THREE.Vector3(0, 120, 0),
       rotation: new THREE.Vector3(Math.PI / 2, 6, 0),
     },
     {
@@ -79,11 +79,11 @@ let sections = [
     "canvasWhite1",
     "slide3",
     {
-      position: new THREE.Vector3(0, -20, -300),
+      position: new THREE.Vector3(0, -20, 150),
       rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
     },
     {
-      position: new THREE.Vector3(0, -20, 0),
+      position: new THREE.Vector3(0, -20, 150),
       rotation: new THREE.Vector3(Math.PI / 2, Math.PI * 5, Math.PI * 5),
     },
     Color.Green
@@ -92,11 +92,11 @@ let sections = [
     "canvasWhite2",
     "slide3",
     {
-      position: new THREE.Vector3(0, -20, -300),
+      position: new THREE.Vector3(0, -20, 150),
       rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
     },
     {
-      position: new THREE.Vector3(0, -20, 0),
+      position: new THREE.Vector3(0, -20, 150),
       rotation: new THREE.Vector3(Math.PI / 2, Math.PI * 5, Math.PI * 5),
     },
     Color.Red
