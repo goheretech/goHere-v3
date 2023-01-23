@@ -42,7 +42,7 @@ let sections = [
     "canvas2",
     "slide2",
     {
-      position: new THREE.Vector3(0, -5, 0),
+      position: new THREE.Vector3(0, 10, 0),
       rotation: new THREE.Vector3((2 * Math.PI) / 2, -6, 0),
     },
     {
@@ -54,12 +54,12 @@ let sections = [
     "canvas3",
     "slide3",
     {
-      position: new THREE.Vector3(-20, 0, 20),
+      position: new THREE.Vector3(-30, 0, 20),
       rotation: new THREE.Vector3(Math.PI / 2, -3, -Math.PI / 2),
     },
     {
       position: new THREE.Vector3(20, 0, 20),
-      rotation: new THREE.Vector3(Math.PI / 2, -3, Math.PI / 2),
+      rotation: new THREE.Vector3(Math.PI / 2, -3, (-Math.PI / 2) * Math.PI),
     }
   ),
   Section(
@@ -70,7 +70,7 @@ let sections = [
       rotation: new THREE.Vector3(Math.PI / 2, 6, 0),
     },
     {
-      position: new THREE.Vector3(0, -5, 0),
+      position: new THREE.Vector3(0, -10, 0),
       rotation: new THREE.Vector3((2 * Math.PI) / 2, -3, 0),
     }
   ),
