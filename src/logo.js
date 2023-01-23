@@ -83,8 +83,8 @@ let sections = [
       rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
     },
     {
-      position: new THREE.Vector3(0, -20, -300),
-      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+      position: new THREE.Vector3(0, -20, -100),
+      rotation: new THREE.Vector3(Math.PI / 2, Math.PI * 10, 0),
     },
     Color.Green
   ),
@@ -92,12 +92,12 @@ let sections = [
     "canvasWhite2",
     "slide3",
     {
-      position: new THREE.Vector3(0, -20, -600),
+      position: new THREE.Vector3(0, -20, -300),
       rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
     },
     {
       position: new THREE.Vector3(0, -20, -300),
-      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+      rotation: new THREE.Vector3(Math.PI / 2, Math.PI * 10, 0),
     },
     Color.Red
   ),
