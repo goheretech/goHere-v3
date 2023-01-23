@@ -54,11 +54,11 @@ let sections = [
     "canvasTower2",
     "slideTower2",
     {
-      position: new THREE.Vector3(0, 150, -500),
+      position: new THREE.Vector3(0, 130, -500),
       rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
     },
     {
-      position: new THREE.Vector3(0, -80, -500),
+      position: new THREE.Vector3(0, -60, -500),
       rotation: new THREE.Vector3(Math.PI / 2, 0, 13 * Math.PI),
     }
   ),
