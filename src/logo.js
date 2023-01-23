@@ -92,6 +92,32 @@ let sections = [
       rotation: new THREE.Vector3((2 * Math.PI) / 2, -3, 0),
     }
   ),
+  Section(
+    "canvasWhite1",
+    "slide3",
+    {
+      position: new THREE.Vector3(0, -20, -600),
+      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+    },
+    {
+      position: new THREE.Vector3(0, -20, -300),
+      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+    },
+    Color.Green
+  ),
+  Section(
+    "canvasWhite2",
+    "slide3",
+    {
+      position: new THREE.Vector3(0, -20, -600),
+      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+    },
+    {
+      position: new THREE.Vector3(0, -20, -300),
+      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+    },
+    Color.Red
+  ),
 ];
 
 function Section(tag, parent, start, end, color = "multi", size = 1) {
