@@ -38,81 +38,81 @@ let sections = [
       rotation: new THREE.Vector3(0, -3, -Math.PI),
     }
   ),
-  Section(
-    "canvasTower",
-    "slideTower",
-    {
-      position: new THREE.Vector3(0, 200, -200),
-      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
-    },
-    {
-      position: new THREE.Vector3(0, 30, -300),
-      rotation: new THREE.Vector3(Math.PI / 2, 0, 8 * Math.PI),
-    }
-  ),
-  Section(
-    "canvasTower2",
-    "slideTower2",
-    {
-      position: new THREE.Vector3(0, 130, -500),
-      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
-    },
-    {
-      position: new THREE.Vector3(0, -60, -500),
-      rotation: new THREE.Vector3(Math.PI / 2, 0, 13 * Math.PI),
-    }
-  ),
-  Section(
-    "canvas2",
-    "slide2",
-    {
-      position: new THREE.Vector3(0, 10, 0),
-      rotation: new THREE.Vector3((2 * Math.PI) / 2, -6, 0),
-    },
-    {
-      position: new THREE.Vector3(0, -30, 0),
-      rotation: new THREE.Vector3((-2 * Math.PI) / 2, 6, 0),
-    }
-  ),
+  // Section(
+  //   "canvasTower",
+  //   "slideTower",
+  //   {
+  //     position: new THREE.Vector3(0, 200, -200),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, 30, -300),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 8 * Math.PI),
+  //   }
+  // ),
+  // Section(
+  //   "canvasTower2",
+  //   "slideTower2",
+  //   {
+  //     position: new THREE.Vector3(0, 130, -500),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, -60, -500),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 13 * Math.PI),
+  //   }
+  // ),
+  // Section(
+  //   "canvas2",
+  //   "slide2",
+  //   {
+  //     position: new THREE.Vector3(0, 10, 0),
+  //     rotation: new THREE.Vector3((2 * Math.PI) / 2, -6, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, -30, 0),
+  //     rotation: new THREE.Vector3((-2 * Math.PI) / 2, 6, 0),
+  //   }
+  // ),
 
-  Section(
-    "canvas4",
-    "slide4",
-    {
-      position: new THREE.Vector3(0, 100, 0),
-      rotation: new THREE.Vector3(Math.PI / 2, 6, 0),
-    },
-    {
-      position: new THREE.Vector3(0, -15, 0),
-      rotation: new THREE.Vector3((2 * Math.PI) / 2, -3, 0),
-    }
-  ),
-  Section(
-    "canvasWhite1",
-    "slide3",
-    {
-      position: new THREE.Vector3(0, -5, 30),
-      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
-    },
-    {
-      position: new THREE.Vector3(0, -10, 30),
-      rotation: new THREE.Vector3(Math.PI / 2, -Math.PI * 3, Math.PI * 9),
-    },
-    Color.Green
-  ),
-  Section(
-    "canvasWhite2",
-    "slide3",
-    {
-      position: new THREE.Vector3(0, -5, 30),
-      rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
-    },
-    {
-      position: new THREE.Vector3(0, -10, 30),
-      rotation: new THREE.Vector3(Math.PI / 2, Math.PI * 5, Math.PI * 5),
-    },
-    Color.Red
-  ),
+  // Section(
+  //   "canvas4",
+  //   "slide4",
+  //   {
+  //     position: new THREE.Vector3(0, 100, 0),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 6, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, -15, 0),
+  //     rotation: new THREE.Vector3((2 * Math.PI) / 2, -3, 0),
+  //   }
+  // ),
+  // Section(
+  //   "canvasWhite1",
+  //   "slide3",
+  //   {
+  //     position: new THREE.Vector3(0, -5, 30),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, -10, 30),
+  //     rotation: new THREE.Vector3(Math.PI / 2, -Math.PI * 3, Math.PI * 9),
+  //   },
+  //   Color.Green
+  // ),
+  // Section(
+  //   "canvasWhite2",
+  //   "slide3",
+  //   {
+  //     position: new THREE.Vector3(0, -5, 30),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, -10, 30),
+  //     rotation: new THREE.Vector3(Math.PI / 2, Math.PI * 5, Math.PI * 5),
+  //   },
+  //   Color.Red
+  // ),
 ];
 
 function Section(tag, parent, start, end, color = "multi", size = 1) {
