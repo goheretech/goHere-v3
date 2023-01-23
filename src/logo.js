@@ -75,18 +75,18 @@ let sections = [
   //   }
   // ),
 
-  // Section(
-  //   "canvas4",
-  //   "slide4",
-  //   {
-  //     position: new THREE.Vector3(0, 100, 0),
-  //     rotation: new THREE.Vector3(Math.PI / 2, 6, 0),
-  //   },
-  //   {
-  //     position: new THREE.Vector3(0, -15, 0),
-  //     rotation: new THREE.Vector3((2 * Math.PI) / 2, -3, 0),
-  //   }
-  // ),
+  Section(
+    "canvas4",
+    "slide4",
+    {
+      position: new THREE.Vector3(0, 100, 0),
+      rotation: new THREE.Vector3(Math.PI / 2, 6, 0),
+    },
+    {
+      position: new THREE.Vector3(0, -15, 0),
+      rotation: new THREE.Vector3((2 * Math.PI) / 2, -3, 0),
+    }
+  ),
   // Section(
   //   "canvasWhite1",
   //   "slide3",
