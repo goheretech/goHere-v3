@@ -3,7 +3,6 @@ import * as dat from "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.m
 import { OrbitControls } from "OrbitControls";
 import { GLTFLoader } from "GLTFLoader";
 import { RGBELoader } from "RGBELoader";
-import { Vector3 } from "three";
 
 let envMap, logo;
 
@@ -30,66 +29,12 @@ let sections = [
     "canvas1",
     "slide1",
     {
-      position: new THREE.Vector3(0, 90, 50),
-      rotation: new THREE.Vector3(0, 3, Math.PI),
+      position: new THREE.Vector3(0, 0, 60),
+      rotation: new THREE.Vector3(Math.PI / 2, 1.1, 0),
     },
     {
-      position: new THREE.Vector3(0, -50, 0),
-      rotation: new THREE.Vector3(0, -3, -Math.PI),
-    }
-  ),
-  Section(
-    "canvasTower",
-    "slideTower",
-    {
-      position: new THREE.Vector3(0, 150, -200),
+      position: new THREE.Vector3(0, 0, 60),
       rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
-    },
-    {
-      position: new THREE.Vector3(0, -20, -300),
-      rotation: new THREE.Vector3(Math.PI / 2, 0, 6 * Math.PI),
-    }
-  ),
-  Section(
-    "canvas2",
-    "slide2",
-    {
-      position: new THREE.Vector3(0, 10, 0),
-      rotation: new THREE.Vector3((2 * Math.PI) / 2, -6, 0),
-    },
-    {
-      position: new THREE.Vector3(0, -30, 0),
-      rotation: new THREE.Vector3((-2 * Math.PI) / 2, 6, 0),
-    }
-  ),
-
-  Section(
-    "canvas3",
-    "slide3",
-    {
-      position: new THREE.Vector3(-30, -5, 20),
-      rotation: new THREE.Vector3(Math.PI / 2, -3, -Math.PI / 2),
-    },
-    {
-      position: new THREE.Vector3(20, -5, 20),
-      rotation: new THREE.Vector3(
-        Math.PI / 2,
-        -3,
-        (-Math.PI / 2) * Math.PI * 2
-      ),
-    }
-  ),
-
-  Section(
-    "canvas4",
-    "slide4",
-    {
-      position: new THREE.Vector3(0, 100, 0),
-      rotation: new THREE.Vector3(Math.PI / 2, 6, 0),
-    },
-    {
-      position: new THREE.Vector3(0, -10, 0),
-      rotation: new THREE.Vector3((2 * Math.PI) / 2, -3, 0),
     }
   ),
 ];
@@ -197,7 +142,7 @@ function SetupCamera(master) {
     start.camera.rotation.z
   );
   master.scene.add(master.camera);
-  // const controls = new OrbitControls(camera, renderer.domElement);
+  const controls = new OrbitControls(master.camera, master.renderer.domElement);
 }
 
 function SetupLogo() {
@@ -238,6 +183,7 @@ function FinalRender(master) {
 function Render() {
   for (let i = 0; i < sections.length; i++) {
     const master = sections[i];
+    master.logo.rotation.z += 0.001;
     master.renderer.render(master.scene, master.camera);
   }
   requestAnimationFrame(Render);
