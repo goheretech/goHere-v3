@@ -38,6 +38,42 @@ let sections = [
       rotation: new THREE.Vector3(0, -3, -Math.PI),
     }
   ),
+  // Section(
+  //   "canvasTower",
+  //   "slideTower",
+  //   {
+  //     position: new THREE.Vector3(0, 200, -200),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, 30, -300),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 8 * Math.PI),
+  //   }
+  // ),
+  // Section(
+  //   "canvasTower2",
+  //   "slideTower2",
+  //   {
+  //     position: new THREE.Vector3(0, 130, -500),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, -60, -500),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 13 * Math.PI),
+  //   }
+  // ),
+  // Section(
+  //   "canvas2",
+  //   "slide2",
+  //   {
+  //     position: new THREE.Vector3(0, 10, 0),
+  //     rotation: new THREE.Vector3((2 * Math.PI) / 2, -6, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, -30, 0),
+  //     rotation: new THREE.Vector3((-2 * Math.PI) / 2, 6, 0),
+  //   }
+  // ),
 
   Section(
     "canvas4",
@@ -51,6 +87,32 @@ let sections = [
       rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
     }
   ),
+  // Section(
+  //   "canvasWhite1",
+  //   "slide3",
+  //   {
+  //     position: new THREE.Vector3(0, -5, 30),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, -10, 30),
+  //     rotation: new THREE.Vector3(Math.PI / 2, -Math.PI * 3, Math.PI * 9),
+  //   },
+  //   Color.Green
+  // ),
+  // Section(
+  //   "canvasWhite2",
+  //   "slide3",
+  //   {
+  //     position: new THREE.Vector3(0, -5, 30),
+  //     rotation: new THREE.Vector3(Math.PI / 2, 0, 0),
+  //   },
+  //   {
+  //     position: new THREE.Vector3(0, -10, 30),
+  //     rotation: new THREE.Vector3(Math.PI / 2, Math.PI * 5, Math.PI * 5),
+  //   },
+  //   Color.Red
+  // ),
 ];
 
 function Section(tag, parent, start, end, color = "multi", size = 1) {
@@ -134,7 +196,7 @@ function SetupRenderer(master) {
   master.renderer.toneMapping = THREE.ACESFilmicToneMapping;
   master.renderer.setPixelRatio(window.devicePixelRatio);
   master.renderer.setSize(window.innerWidth, window.innerHeight);
-  master.renderer.setClearColor(0xeb4034, 1);
+  master.renderer.setClearColor(0xeb4034, 0);
   master.scene.environment = envMap;
 }
 
@@ -156,6 +218,7 @@ function SetupCamera(master) {
     start.camera.rotation.z
   );
   master.scene.add(master.camera);
+  // const controls = new OrbitControls(camera, renderer.domElement);
 }
 
 function SetupLogo() {
@@ -189,7 +252,6 @@ function FinalRender(master) {
     const master = sections[i];
     master.renderer.render(master.scene, master.camera);
   }
-  console.log("No problems");
   getPixels();
   requestAnimationFrame(Render);
 }
@@ -288,7 +350,6 @@ function GetPercentage(scrollPos, master) {
   let per = 0;
   if (scrollPos > master.topPixel && scrollPos < master.bottomPixel) {
     per = mapRange(scrollPos, master.topPixel, master.bottomPixel, 0, 100);
-    console.log("Showing logo");
   } else if (scrollPos >= master.bottomPixel) {
     per = 100;
   }
@@ -306,7 +367,9 @@ function getPixels() {
 
 function divRange(id) {
   var div = document.getElementById(id);
+  console.log(`ID[${id}]: ${div}`);
   var rect = div.getBoundingClientRect();
+  // console.log(div.offsetHeight);
   var top = div.offsetTop - div.offsetHeight;
   var bottom = div.offsetTop + div.offsetHeight;
 
