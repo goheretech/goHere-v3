@@ -133,7 +133,7 @@ function SetupRenderer(master) {
   master.renderer.toneMapping = THREE.ACESFilmicToneMapping;
   master.renderer.setPixelRatio(window.devicePixelRatio);
   master.renderer.setSize(window.innerWidth, window.innerHeight);
-  master.renderer.setClearColor(0xeb4034, 1);
+  master.renderer.setClearColor(0xeb4034, 0);
   master.scene.environment = envMap;
 }
 
