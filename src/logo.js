@@ -1,6 +1,6 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.module.js";
 import * as dat from "https://cdn.jsdelivr.net/npm/dat.gui@0.7.9/build/dat.gui.module.js";
-import { GLTFLoader } from "GLTFLoader";
+import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.148.0/examples/jsm/loaders/GLTFLoader.js";
 import { RGBELoader } from "RGBELoader";
 import { Vector3 } from "three";
 
