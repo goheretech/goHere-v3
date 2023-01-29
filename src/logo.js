@@ -241,7 +241,6 @@ function SetupLogo() {
         pod.material.envMapIntensity = 1.5;
       }
       master.scene.add(master.logo);
-      console.log(master.logo);
     }
     FinalRender();
   });
@@ -367,7 +366,6 @@ function getPixels() {
 
 function divRange(id) {
   var div = document.getElementById(id);
-  console.log(`ID[${id}]: ${div}`);
   var rect = div.getBoundingClientRect();
   // console.log(div.offsetHeight);
   var top = div.offsetTop - div.offsetHeight;
