@@ -1,0 +1,30 @@
+<script>
+    var slides = document.getElementsByClassName('slide_section');
+    var timings = document.getElementsByClassName('timing-box');
+slides = Array.prototype.slice.call(slides);
+timings = Array.prototype.slice.call(timings);
+    
+  const viewportHeight = window.innerHeight;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const index = timings.indexOf(entry.target);
+        slides.forEach((slide, i) => {
+          if (i === index) {
+            slide.style.zIndex = "10";
+          } else {
+            slide.style.zIndex = "0";
+          }
+        });
+      }
+    });
+  }, { threshold: [0, 1] });
+  
+  
+  timings.forEach((timing) => {
+    observer.observe(timing);
+  });
+
+
+
+</script>
