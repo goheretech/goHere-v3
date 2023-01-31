@@ -214,6 +214,7 @@ function SetupLogo() {
       pod.material = logoMaterials[p];
       pod.material.envMapIntensity = 1.5;
     }
+    logo.position.y = 90;
     scene.add(logo);
     FinalRender();
   });
