@@ -14,6 +14,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js" integrity="sha512-9ex1Kp3S7uKHVZmQ44o5qPV6PnP8/kYp8IpUHLDJ+GZ/qpKAqGgEEH7rhYlM4pTOSs/WyHtPubN2UePKTnTSww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/textillate/0.4.0/jquery.textillate.min.js" integrity="sha512-0bHMhYsdpiur1bT84kDH4D7cpxFQ9O7uA5yxVAqWC87h552Xt0swX4M+ZlXMKE8oPVRIJ5lAwXWO2UWeDwJJOw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
+        .slide{
+            height:400vh;
+
+        }
+        #dropLogo{
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+        }
         #startButton{
             padding:10px 15px;
             border: 1px solid rgb(0, 0, 0);
@@ -167,7 +178,7 @@ p{
 </head>
 <body>
   
-    
+    <canvas id="dropLogo"></canvas>
     <!-- <div class="loadScreen"><div class="loadBar"><div id="loadbar_internal"></div></div></div> -->
     <div class="holder">
         <div id="middle">
@@ -178,8 +189,8 @@ p{
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum error veritatis vitae blanditiis quod beatae soluta fugit tempore harum quo inventore eaque nobis dolorem, molestias distinctio temporibus, laudantium culpa sequi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum error veritatis vitae blanditiis quod beatae soluta fugit tempore harum quo inventore eaque nobis dolorem, molestias distinctio temporibus, laudantium culpa sequi.</p>
                 </div>
             </section>
-            <div id="slide1">
-                <canvas style="width:500px;" id="canvas1"></canvas>
+            <div id="slide1" class="slide">
+                
             </div>
             <section>
                 <div class="card">
@@ -188,11 +199,9 @@ p{
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum error veritatis vitae blanditiis quod beatae soluta fugit tempore harum quo inventore eaque nobis dolorem, molestias distinctio temporibus, laudantium culpa sequi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum error veritatis vitae blanditiis quod beatae soluta fugit tempore harum quo inventore eaque nobis dolorem, molestias distinctio temporibus, laudantium culpa sequi.</p>
                 </div>
             </section>
-            <div id="slide2">
-                <canvas style="width:500px;" id="canvas2"></canvas>
+            <div id="slide2" class="slide">
             </div>
             <div id="slideTower" style="background:red;">
-                <canvas style="width:500px;" id="canvasTower"></canvas>
             </div>
             <section>
                 <div class="card">
@@ -201,8 +210,7 @@ p{
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum error veritatis vitae blanditiis quod beatae soluta fugit tempore harum quo inventore eaque nobis dolorem, molestias distinctio temporibus, laudantium culpa sequi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum error veritatis vitae blanditiis quod beatae soluta fugit tempore harum quo inventore eaque nobis dolorem, molestias distinctio temporibus, laudantium culpa sequi.</p>
                 </div>
             </section>
-            <div id="slide3">
-                <canvas style="width:500px;" id="canvas3"></canvas>
+            <div id="slide3" class="slide">
             </div>
             
             <section>
@@ -219,8 +227,7 @@ p{
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum error veritatis vitae blanditiis quod beatae soluta fugit tempore harum quo inventore eaque nobis dolorem, molestias distinctio temporibus, laudantium culpa sequi. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum error veritatis vitae blanditiis quod beatae soluta fugit tempore harum quo inventore eaque nobis dolorem, molestias distinctio temporibus, laudantium culpa sequi.</p>
                 </div>
             </section>
-            <div id="slide4">
-                <canvas style="width:500px;" id="canvas4"></canvas>
+            <div id="slide4" class="slide">
             </div>
         </div>
     </div>

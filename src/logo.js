@@ -5,7 +5,12 @@ import { GLTFLoader } from "GLTFLoader";
 import { RGBELoader } from "RGBELoader";
 import { Vector3 } from "three";
 
-let envMap, logo;
+let envMap,
+  logo,
+  scene = new THREE.Scene(),
+  renderer,
+  camera,
+  canvas;
 
 const Color = {
   Red: { Hex: 0xe7180c, Material: "" },
@@ -23,11 +28,11 @@ const hdrEquirect = new RGBELoader()
   )
   .load("royal_esplanade_1k.hdr?alt=media", function () {
     hdrEquirect.mapping = THREE.EquirectangularReflectionMapping;
+    // envMap = hdrEquirect;
   });
 
 let sections = [
   Section(
-    "canvas1",
     "slide1",
     {
       position: new THREE.Vector3(0, 90, 50),
@@ -38,33 +43,30 @@ let sections = [
       rotation: new THREE.Vector3(0, -3, -Math.PI),
     }
   ),
-  // Section(
-  //   "canvas2",
-  //   "slide2",
-  //   {
-  //     position: new THREE.Vector3(0, 90, 50),
-  //     rotation: new THREE.Vector3(0, 3, Math.PI),
-  //   },
-  //   {
-  //     position: new THREE.Vector3(0, -50, 0),
-  //     rotation: new THREE.Vector3(0, -3, -Math.PI),
-  //   }
-  // ),
-  // Section(
-  //   "canvas3",
-  //   "slide3",
-  //   {
-  //     position: new THREE.Vector3(0, 90, 50),
-  //     rotation: new THREE.Vector3(0, 3, Math.PI),
-  //   },
-  //   {
-  //     position: new THREE.Vector3(0, -50, 0),
-  //     rotation: new THREE.Vector3(0, -3, -Math.PI),
-  //   }
-  // ),
+  Section(
+    "slide2",
+    {
+      position: new THREE.Vector3(0, 90, 50),
+      rotation: new THREE.Vector3(0, 3, Math.PI),
+    },
+    {
+      position: new THREE.Vector3(0, -50, 0),
+      rotation: new THREE.Vector3(0, -3, -Math.PI),
+    }
+  ),
+  Section(
+    "slide3",
+    {
+      position: new THREE.Vector3(0, 90, 50),
+      rotation: new THREE.Vector3(0, 3, Math.PI),
+    },
+    {
+      position: new THREE.Vector3(0, -50, 0),
+      rotation: new THREE.Vector3(0, -3, -Math.PI),
+    }
+  ),
 
   Section(
-    "canvas4",
     "slide4",
     {
       position: new THREE.Vector3(0, 100, 0),
@@ -103,15 +105,8 @@ let sections = [
   // ),
 ];
 
-function Section(tag, parent, start, end, color = "multi", size = 1) {
+function Section(parent, start, end) {
   return {
-    camera: "",
-    scene: new THREE.Scene(),
-    renderer: "",
-    canvas: "",
-    canvasTag: tag,
-    color: color,
-    logo: "",
     parent: parent,
     topPixel: "",
     bottomPixel: "",
@@ -159,53 +154,51 @@ let start = {
 Start();
 
 function Start() {
-  for (let i = 0; i < sections.length; i++) {
-    let section = sections[i];
-    SetupRenderer(section);
-    SetupCamera(section);
-  }
+  SetupRenderer();
+  SetupCamera();
   SetupLogo();
   window.addEventListener("scroll", onScroll);
   window.addEventListener("resize", onWindowResize, false);
   // FinalRender();
 }
 
-function SetupRenderer(master) {
-  master.canvas = document.getElementById(master.canvasTag);
-  master.renderer = new THREE.WebGLRenderer({
-    canvas: master.canvas,
+function SetupRenderer() {
+  canvas = document.getElementById("dropLogo");
+  // console.log(canvas);
+  renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
     antialias: true,
     alpha: true,
   });
 
-  master.renderer.setPixelRatio(window.devicePixelRatio);
-  master.renderer.setSize(window.innerWidth, window.innerHeight);
-  master.renderer.outputEncoding = THREE.sRGBEncoding;
-  master.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  master.renderer.setPixelRatio(window.devicePixelRatio);
-  master.renderer.setSize(window.innerWidth, window.innerHeight);
-  master.renderer.setClearColor(0xeb4034, 0);
-  master.scene.environment = envMap;
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0xeb4034, 0);
+  scene.environment = envMap;
 }
 
 function SetupCamera(master) {
-  master.camera = new THREE.PerspectiveCamera(
+  camera = new THREE.PerspectiveCamera(
     35,
     window.innerWidth / window.innerHeight,
     0.1,
     3000
   );
-  master.camera.position.set(
+  camera.position.set(
     start.camera.position.x,
     start.camera.position.y,
     start.camera.position.z
   );
-  master.camera.rotation.set(
+  camera.rotation.set(
     start.camera.rotation.x,
     start.camera.rotation.y,
     start.camera.rotation.z
   );
-  master.scene.add(master.camera);
+  scene.add(camera);
   // const controls = new OrbitControls(camera, renderer.domElement);
 }
 
@@ -216,49 +209,32 @@ function SetupLogo() {
   loader.load("betterLogo.glb?alt=media", function (gltf) {
     logo = gltf.scene.children[0];
 
-    for (let s = 0; s < sections.length; s++) {
-      const master = sections[s];
-      master.logo = logo.clone(true);
-
-      for (let p = 0; p < master.logo.children.length; p++) {
-        let pod = master.logo.children[p];
-        pod.material = logoMaterials[p];
-        if (master.color != "multi") {
-          pod.material = master.color.Material;
-        }
-        pod.material.envMapIntensity = 1.5;
-      }
-      master.scene.add(master.logo);
+    for (let p = 0; p < logo.children.length; p++) {
+      let pod = logo.children[p];
+      pod.material = logoMaterials[p];
+      pod.material.envMapIntensity = 1.5;
     }
+    scene.add(logo);
     FinalRender();
   });
 }
 
-function FinalRender(master) {
-  for (let i = 0; i < sections.length; i++) {
-    const master = sections[i];
-    master.renderer.render(master.scene, master.camera);
-  }
+function FinalRender() {
+  renderer.render(scene, camera);
   getPixels();
   requestAnimationFrame(Render);
 }
 
 function Render() {
-  for (let i = 0; i < sections.length; i++) {
-    const master = sections[i];
-    master.renderer.render(master.scene, master.camera);
-  }
+  renderer.render(scene, camera);
   requestAnimationFrame(Render);
 }
 
 function onWindowResize() {
-  for (let i = 0; i < sections.length; i++) {
-    const master = sections[i];
-    master.camera.aspect = window.innerWidth / window.outerHeight;
-    master.camera.updateProjectionMatrix();
-    master.renderer.setSize(window.innerWidth, window.outerHeight);
-    getPixels();
-  }
+  camera.aspect = window.innerWidth / window.outerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.outerHeight);
+  getPixels();
 }
 function onScroll() {
   //Get percent scrolled
@@ -274,21 +250,22 @@ function onScroll() {
   for (let i = 0; i < sections.length; i++) {
     const master = sections[i];
 
-    let p = GetPercentage(scrollPos, master);
+    let p = GetPercentage(scrollPos);
+    console.log(p);
+    let _transform = CurrentTransform(p);
 
-    let _transform = CurrentTransform(p, master);
-
-    master.logo.position.x = _transform.p.x;
-    master.logo.position.y = _transform.p.y;
-    master.logo.position.z = _transform.p.z;
-    master.logo.rotation.x = _transform.r.x;
-    master.logo.rotation.y = _transform.r.y;
-    master.logo.rotation.z = _transform.r.z;
+    logo.position.x = _transform.p.x;
+    logo.position.y = _transform.p.y;
+    logo.position.z = _transform.p.z;
+    logo.rotation.x = _transform.r.x;
+    logo.rotation.y = _transform.r.y;
+    logo.rotation.z = _transform.r.z;
   }
 }
 
-function CurrentTransform(p, master) {
-  let _p = p / 100;
+function CurrentTransform(p) {
+  let _p = p.percent / 100;
+  let master = sections[p.index];
   // console.log(`Percent ${_p}`);
   let pos = new THREE.Vector3(
     lerp(
@@ -333,14 +310,15 @@ function lerp(t, start, end) {
   return l;
 }
 
-function GetPercentage(scrollPos, master) {
-  let per = 0;
-  if (scrollPos > master.topPixel && scrollPos < master.bottomPixel) {
-    per = mapRange(scrollPos, master.topPixel, master.bottomPixel, 0, 100);
-  } else if (scrollPos >= master.bottomPixel) {
-    per = 100;
+function GetPercentage(scrollPos) {
+  for (let i = 0; i < sections.length; i++) {
+    const master = sections[i];
+    let per = 0;
+    if (scrollPos > master.topPixel && scrollPos < master.bottomPixel) {
+      per = mapRange(scrollPos, master.topPixel, master.bottomPixel, 0, 100);
+      return { percent: per, index: i };
+    }
   }
-  return per;
 }
 
 function getPixels() {
@@ -355,7 +333,6 @@ function getPixels() {
 function divRange(id) {
   var div = document.getElementById(id);
   var rect = div.getBoundingClientRect();
-  // console.log(div.offsetHeight);
   var top = div.offsetTop - div.offsetHeight;
   var bottom = div.offsetTop + div.offsetHeight;
 
