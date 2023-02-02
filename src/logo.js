@@ -184,7 +184,7 @@ function SetupRenderer() {
     antialias: true,
     alpha: true,
   });
-  screenRatio = (window.innerHeight / window.innerWidth) * 2;
+  screenRatio = window.innerHeight / window.innerWidth;
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.outputEncoding = THREE.sRGBEncoding;
@@ -246,7 +246,7 @@ function Render() {
 }
 
 function onWindowResize() {
-  screenRatio = (window.innerHeight / window.innerWidth) * 2;
+  screenRatio = window.innerHeight / window.innerWidth;
   console.log(screenRatio);
   camera.aspect = window.innerWidth / window.outerHeight;
   camera.updateProjectionMatrix();
