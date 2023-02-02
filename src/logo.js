@@ -334,7 +334,7 @@ function GetPercentage(scrollPos) {
   for (let i = 0; i < sections.length; i++) {
     const master = sections[i];
     let per = 0;
-    if (scrollPos > master.topPixel && scrollPos < master.bottomPixel + 500) {
+    if (scrollPos > master.topPixel && scrollPos < master.bottomPixel + 1500) {
       per = mapRange(scrollPos, master.topPixel, master.bottomPixel, 0, 100);
       return { percent: per, index: i };
     }
