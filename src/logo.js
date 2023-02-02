@@ -46,7 +46,7 @@ let sections = [
   Section(
     "slide2",
     {
-      position: new THREE.Vector3(0, 90, 50),
+      position: new THREE.Vector3(0, 50, 50),
       rotation: new THREE.Vector3(Math.PI, 3, Math.PI),
     },
     {
@@ -69,7 +69,7 @@ let sections = [
   Section(
     "slide4",
     {
-      position: new THREE.Vector3(0, 100, 0),
+      position: new THREE.Vector3(0, 50, 0),
       rotation: new THREE.Vector3((1.5 * Math.PI) / 2, 6, 0),
     },
     {
