@@ -248,7 +248,7 @@ function Render() {
 
 function onWindowResize() {
   screenRatio = window.innerHeight / window.innerWidth;
-  screenRatio = mapRange(screenRatio, 1.7, 0.4, 0.9, 1);
+  screenRatio = mapRange(screenRatio, 1.7, 0.4, 1, 0.8);
   console.log(screenRatio);
   camera.aspect = window.innerWidth / window.outerHeight;
   camera.updateProjectionMatrix();
