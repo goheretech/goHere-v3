@@ -47,11 +47,11 @@ let sections = [
     "slide2",
     {
       position: new THREE.Vector3(0, 90, 50),
-      rotation: new THREE.Vector3(-5, 3, Math.PI),
+      rotation: new THREE.Vector3(Math.PI * 4, 3, Math.PI),
     },
     {
       position: new THREE.Vector3(0, 0, 0),
-      rotation: new THREE.Vector3(0, -18, Math.PI * 2),
+      rotation: new THREE.Vector3(0, -18, Math.PI),
     }
   ),
   Section(
