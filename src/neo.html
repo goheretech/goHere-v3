@@ -1,0 +1,56 @@
+<style>
+  :root {
+    --colorMain: #c0c0c0;
+    --fontSize: 162px;
+    --brShadow: -6px 6px 15px rgba(0, 0, 0, 0.5);
+    --tlShadow: 6px -6px 15px rgba(255, 255, 255, 0.8);
+  }
+
+  #hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  .neo {
+    color: var(--colorMain);
+    font-size: var(--font-size);
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    text-shadow: var(--brShadow), var(--tlShadow);
+    position: relative;
+  }
+  neo::before,
+  neo::after {
+    position: absolute;
+    background: var(--colorMain);
+    content: "";
+    border-radius: 10%;
+  }
+
+  neo::before {
+    left: 0;
+    width: calc(var(--fontSize) * 1.28);
+    height: calc(var(--fontSize) * 1.28);
+    top: calc(var(--fontSize) * -0.85);
+    z-index: 10;
+    box-shadow: inset var(--brShadow), inset var(--tlShadow);
+  }
+  neo::after {
+    left: calc(var(--fontSize) * -0.39);
+    width: calc(var(--fontSize) * 1.56);
+    height: calc(var(--fontSize) * 1.56);
+    top: calc(var(--fontSize) * -1.56);
+    box-shadow: var(--brShadow), var(--tlShadow);
+  }
+</style>
+
+<body style="background: #c0c0c0">
+  <h1 class="neo">This is a big heading</h1>
+</body>

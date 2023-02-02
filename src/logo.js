@@ -50,8 +50,8 @@ let sections = [
       rotation: new THREE.Vector3(0, 3, Math.PI),
     },
     {
-      position: new THREE.Vector3(0, -50, 0),
-      rotation: new THREE.Vector3(0, -3, -Math.PI),
+      position: new THREE.Vector3(0, 0, 0),
+      rotation: new THREE.Vector3(10, 13, -Math.PI),
     }
   ),
   Section(
