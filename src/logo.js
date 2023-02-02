@@ -12,6 +12,8 @@ let envMap,
   camera,
   canvas;
 
+let screenRatio;
+
 const Color = {
   Red: { Hex: 0xe7180c, Material: "" },
   Orange: { Hex: 0xff8008, Material: "" },
@@ -182,7 +184,7 @@ function SetupRenderer() {
     antialias: true,
     alpha: true,
   });
-
+  screenRatio = window.innerHeight / window.innerWidth;
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.outputEncoding = THREE.sRGBEncoding;
@@ -203,7 +205,7 @@ function SetupCamera(master) {
   camera.position.set(
     start.camera.position.x,
     start.camera.position.y,
-    start.camera.position.z
+    start.camera.position.z * screenRatio
   );
   camera.rotation.set(
     start.camera.rotation.x,
@@ -244,9 +246,12 @@ function Render() {
 }
 
 function onWindowResize() {
+  screenRatio = window.innerHeight / window.innerWidth;
+  console.log(screenRatio);
   camera.aspect = window.innerWidth / window.outerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.outerHeight);
+  camera.position.z = start.camera.position.z * screenRatio;
   getPixels();
 }
 function onScroll() {
