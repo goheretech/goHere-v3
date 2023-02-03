@@ -271,6 +271,7 @@ function onScroll() {
     let p = GetPercentage(scrollPos);
     // console.log(p);
     let _transform = CurrentTransform(p);
+    console.log(_transform);
     if (_transform) {
       return;
     }
@@ -284,6 +285,7 @@ function onScroll() {
 }
 
 function CurrentTransform(p) {
+  console.log(p);
   if (!p) {
     return;
   }
