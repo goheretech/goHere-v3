@@ -272,7 +272,7 @@ function onScroll() {
     // console.log(p);
     let _transform = CurrentTransform(p);
     console.log(_transform);
-    if (_transform) {
+    if (_transform == undefined) {
       return;
     }
     logo.position.x = _transform.p.x;
@@ -286,7 +286,7 @@ function onScroll() {
 
 function CurrentTransform(p) {
   console.log(p);
-  if (!p) {
+  if (p == undefined) {
     return;
   }
   let _p = p.percent / 100;
