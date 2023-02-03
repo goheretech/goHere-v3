@@ -271,7 +271,6 @@ function onScroll() {
     let p = GetPercentage(scrollPos);
     // console.log(p);
     let _transform = CurrentTransform(p);
-    console.log(_transform);
     if (_transform == undefined) {
       return;
     }
@@ -285,13 +284,11 @@ function onScroll() {
 }
 
 function CurrentTransform(p) {
-  console.log(p);
   if (p == undefined) {
     return;
   }
   let _p = p.percent / 100;
   let master = sections[p.index];
-  // console.log(`Percent ${_p}`);
   let pos = new THREE.Vector3(
     lerp(
       _p,
