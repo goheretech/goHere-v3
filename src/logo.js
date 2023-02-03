@@ -249,7 +249,7 @@ function Render() {
 function onWindowResize() {
   screenRatio = window.innerHeight / window.innerWidth;
   screenRatio = mapRange(screenRatio, 1.7, 0.4, 1.3, 1);
-  console.log(screenRatio);
+  // console.log(screenRatio);
   camera.aspect = window.innerWidth / window.outerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.outerHeight);
@@ -268,12 +268,12 @@ function onScroll() {
   const scrollPos = window.pageYOffset;
 
   for (let i = 0; i < sections.length; i++) {
-    const master = sections[i];
-
     let p = GetPercentage(scrollPos);
-    console.log(p);
+    // console.log(p);
     let _transform = CurrentTransform(p);
-
+    if (_transform) {
+      return;
+    }
     logo.position.x = _transform.p.x;
     logo.position.y = _transform.p.y;
     logo.position.z = _transform.p.z;
@@ -284,6 +284,9 @@ function onScroll() {
 }
 
 function CurrentTransform(p) {
+  if (!p) {
+    return;
+  }
   let _p = p.percent / 100;
   let master = sections[p.index];
   // console.log(`Percent ${_p}`);
